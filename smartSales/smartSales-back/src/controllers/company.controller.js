@@ -1,7 +1,7 @@
 'use strict'
 const { param } = require('express/lib/request');
 const Company = require('../models/company.model')
-const {validateData, searchCompany, encrypt, checkPassword, checkDataUpdate, checkPermission, searchAdmin, searchCompany1} = require('../utils/validate');
+const {validateData, searchCompany, encrypt, checkPassword, checkDataUpdate, checkPermission, searchAdmin, searchCompany1, searchCompanyUsername, searchCompanyName} = require('../utils/validate');
 
 
 
@@ -12,7 +12,7 @@ exports.registerCompanyByAdmin = async(req, res)=>{
         const params = req.body;
         const data ={
           name: params.name,
-          type: params.type,
+          type: params.type.toUpperCase(),
           username: params.username,
           password: params.password,
           role: 'CLIENT'
@@ -21,8 +21,9 @@ exports.registerCompanyByAdmin = async(req, res)=>{
         let msg = validateData(data);
         if(!msg){
 
-          const companyExist = await searchCompany(params.username, params.name);
-          if(!companyExist){
+          const companyExistUsername = await searchCompanyUsername(params.username);
+          const companyExistName = await searchCompanyName(params.name);
+          if(!companyExistUsername && !companyExistName ){
               data.password= await encrypt(params.password);
 
               let company = new Company(data);
@@ -82,13 +83,14 @@ exports.updateCompanyByAdmin = async (req, res)=>{
           if(checkData === false){
               return res.send({message:'Unable to update this data'});
           }else{
-              const company = await searchCompany1(params.username);
-              if(!company){
+              const companyExistUsername = await searchCompanyUsername(params.username);
+              const companyExistName = await searchCompanyName(params.name);
+              if(!companyExistUsername && !companyExistName ){
                   const companyUpdate = await Company.findOneAndUpdate({_id: companyId}, params,{new:true});
                   companyUpdate.password = undefined;
                   return res.status(200).send({message:'Company updated', companyUpdate });
               }else{
-                  return res.status(400).send({message:'This username already exists'});
+                  return res.status(400).send({message:'This username or name already exists'});
                   }
               }
           }          
@@ -121,6 +123,7 @@ exports.deleteCompanyByAdmin = async(req,res)=>{
       return error;
   }
 };
+
 
 
 

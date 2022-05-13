@@ -1,7 +1,7 @@
 'use strict'
 const User = require('../models/admin.model');
-const Company = require('../models/company.model')
-const bcrypt = require('bcrypt-nodejs')
+const Company = require('../models/company.model');
+const bcrypt = require('bcrypt-nodejs');
 
 exports.validateData = (data) => {
     let keys =Object.keys(data), msg = '';
@@ -12,9 +12,9 @@ exports.validateData = (data) => {
     return msg.trim();
 };
 
-exports.searchCompany =async(username, name)=>{
+exports.searchCompanyUsername =async(username)=>{
     try {
-        const companyExist = await Company.find({username: username, name: name}).lean();
+        const companyExist = await Company.findOne({username: username}).lean();
         return companyExist
         
     } catch (error) {
@@ -22,6 +22,17 @@ exports.searchCompany =async(username, name)=>{
         return error;
     }
 };
+exports.searchCompanyName =async(name)=>{
+    try {
+        const companyExist = await Company.findOne({name: name}).lean();
+        return companyExist
+        
+    } catch (error) {
+        console.log(error);
+        return error;
+    }
+};
+
 exports.searchCompany1 =async(username)=>{
     try {
         const companyExist = await Company.findOne({username: username}).lean();
@@ -75,6 +86,19 @@ exports.checkDataUpdate = async(user)=>{
         return error;
     }
 };
+exports.checkDataUpdate1 = async(company)=>{
+    try {
+        if(company.password || Object.entries(company).length===0 || company.role){
+            return false;
+        }else{
+            return true;
+        }
+        
+    } catch (error) {
+        console.log(error);
+        return error;
+    }
+};
 
 exports.checkPermission = async(userId, sub)=>{
     try {
@@ -90,6 +114,22 @@ exports.checkPermission = async(userId, sub)=>{
         
     }
 };
+exports.checkPermission1 = async(companyId, sub)=>{
+    try {
+        if(companyId == sub){
+            return true;
+        }else{
+            return false;
+        }
+        
+    } catch (error) {
+        console.log(error);
+        return error;
+        
+    }
+};
+
+
 exports.orderTeams = async (teams)=>{
     try {
         teams.sort((a,b)=> b.teamPoints - a.teamPoints);
