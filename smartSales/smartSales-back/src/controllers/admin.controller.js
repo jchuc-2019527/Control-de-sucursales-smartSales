@@ -1,7 +1,8 @@
 'use strict'
 const Admin = require('../models/admin.model')
 const {validateData, encrypt, checkPassword, checkDataUpdate, checkPermission, searchAdmin, searchCompany1} = require('../utils/validate');
-const {createToken} = require('../services/jwt');
+const {createToken,createTokenCompany} = require('../services/jwt');
+
 
 exports.registerAdmin = async(req, res)=>{
     try {
@@ -57,7 +58,7 @@ exports.login = async (req, res) => {
             } else {
                 let companyExist = await searchCompany1(params.username);
             if (companyExist && await checkPassword(params.password, companyExist.password)) {
-                const token = await createToken(companyExist);
+                const token = await createTokenCompany(companyExist);
                 return res.status(200).send({token, message: 'Login Company successfully', companyExist});
             }
                 return res.status(400).send({message: 'Username or password incorrect'});
