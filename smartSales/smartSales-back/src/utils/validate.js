@@ -1,7 +1,7 @@
 'use strict'
 const User = require('../models/admin.model');
-const Company = require('../models/company.model');
-const bcrypt = require('bcrypt-nodejs');
+const Company = require('../models/company.model')
+const bcrypt = require('bcrypt-nodejs')
 
 exports.validateData = (data) => {
     let keys =Object.keys(data), msg = '';

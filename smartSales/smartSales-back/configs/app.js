@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const companyRoutes = require('../src/routes/company.routes');
 const adminRoutes = require('../src/routes/admin.routes');
 const branchRoutes = require('../src/routes/branch.routes');
+const productCompanyRoutes = require('../src/routes/productCompany.routes');
 
 const app = new express();
 
@@ -18,6 +19,7 @@ app.use(cors());
 app.use('/company', companyRoutes);
 app.use('/admin', adminRoutes);
 app.use('/branch', branchRoutes);
+app.use('/productCompany', productCompanyRoutes);
 
 
 module.exports = app;

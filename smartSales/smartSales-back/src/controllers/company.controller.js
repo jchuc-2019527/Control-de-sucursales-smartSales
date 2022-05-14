@@ -11,8 +11,8 @@ exports.registerCompanyByAdmin = async(req, res)=>{
     try {
         const params = req.body;
         const data ={
-          name: params.name,
-          type: params.type.toUpperCase(),
+          name: params.name.toUpperCase(),
+          type: params.type,
           username: params.username,
           password: params.password,
           role: 'CLIENT'
@@ -22,7 +22,7 @@ exports.registerCompanyByAdmin = async(req, res)=>{
         if(!msg){
 
           const companyExistUsername = await searchCompanyUsername(params.username);
-          const companyExistName = await searchCompanyName(params.name);
+          const companyExistName = await searchCompanyName(params.name.toUpperCase());
           if(!companyExistUsername && !companyExistName ){
               data.password= await encrypt(params.password);
 

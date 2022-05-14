@@ -51,15 +51,15 @@ exports.login = async (req, res) => {
         }
         let msg = validateData(data);
         if (!msg) {
-            let userExist = await searchAdmin(params.username);
-            if (userExist && await checkPassword(params.password, userExist.password)) {
-                const token = await createToken(userExist);
-                return res.status(200).send({token, message: 'Login successfully', userExist});
+            let search = await searchAdmin(params.username);
+            if (search && await checkPassword(params.password, search.password)) {
+                const token = await createToken(search);
+                return res.status(200).send({token, message: 'Login successfully', search});
             } else {
-                let companyExist = await searchCompany1(params.username);
-            if (companyExist && await checkPassword(params.password, companyExist.password)) {
-                const token = await createTokenCompany(companyExist);
-                return res.status(200).send({token, message: 'Login Company successfully', companyExist});
+                let search = await searchCompany1(params.username);
+            if (search && await checkPassword(params.password, search.password)) {
+                const token = await createTokenCompany(search);
+                return res.status(200).send({token, message: 'Login Company successfully', search});
             }
                 return res.status(400).send({message: 'Username or password incorrect'});
             } 

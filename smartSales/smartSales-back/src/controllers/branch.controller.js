@@ -11,13 +11,13 @@ exports.addBranch = async(req, res)=>{
         const companyId = req.company.sub
 
         const data = {
-            name: params.name,
+            name: params.name.toUpperCase(),
             direction: params.direction,
             company: companyId
         }
         const msg = validateData(data);
         if(!msg){
-            const branchExist = await Branch.findOne({name: params.name, direction: params.direction, company:companyId});
+            const branchExist = await Branch.findOne({name: params.name.toUpperCase(), direction: params.direction, company:companyId});
             if(!branchExist){
                 let branch = new Branch(data);
                 await branch.save();
@@ -34,7 +34,7 @@ exports.addBranch = async(req, res)=>{
     }
 };
 
-//Editar una sucursal de la persona logeada
+//Editar una sucursal de la empresa logeada
 exports.updateBranch = async (req,res)=>{
     try {
         const params = req.body;
@@ -49,9 +49,9 @@ exports.updateBranch = async (req,res)=>{
                 if(checkData === false){
                     return res.status(400).send({message:'Unable to update this data'});
                 }else{
-                    const branchExist = await Branch.findOne({name:params.name, direction:params.direction, company:companyId});
+                    const branchExist = await Branch.findOne({name:params.name.toUpperCase(), company:companyId});
                     if(!branchExist){
-                        const branchUpdate = await Branch.findOneAndUpdate({_id: branchId}, params, {new:true});
+                        const branchUpdate = await Branch.findOneAndUpdate({_id: branchId}, {name: params.name.toUpperCase(), direction: params.direction}, {new:true});
                         return res.status(200).send({message: 'Branch Updated', branchUpdate})
                     }else{
                         return res.status(400).send({message:'Branch already exist'})
