@@ -1,4 +1,3 @@
-'use strict'
 const User = require('../models/admin.model');
 const Company = require('../models/company.model')
 const bcrypt = require('bcrypt-nodejs')
@@ -125,15 +124,25 @@ exports.checkPermission1 = async(companyId, sub)=>{
     } catch (error) {
         console.log(error);
         return error;
-        
     }
 };
 
 
-exports.orderTeams = async (teams)=>{
+exports.orderProducts = async (products)=>{
     try {
-        teams.sort((a,b)=> b.teamPoints - a.teamPoints);
-        return teams;
+        products.sort((a,b)=> b.stock - a.stock);
+        return products;
+
+    } catch (error) {
+        console.log(error);
+        return error;
+    }
+}
+
+exports.orderProducts2 = async (products)=>{
+    try {
+        products.sort((a,b)=> a.stock - b.stock);
+        return products;
 
     } catch (error) {
         console.log(error);

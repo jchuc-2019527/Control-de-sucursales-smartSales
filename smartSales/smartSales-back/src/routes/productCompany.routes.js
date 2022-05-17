@@ -10,4 +10,7 @@ api.post('/addProductCompany', [mdAuth.ensureAuth1], controllerProductCompany.ad
 api.get('/getProducts', [mdAuth.ensureAuth1], controllerProductCompany.getProducts);
 api.put('/updateProduct/:id', [mdAuth.ensureAuth1], controllerProductCompany.updateProduct);
 api.delete('/deleteProduct/:id', [mdAuth.ensureAuth1], controllerProductCompany.deleteProduct);
+api.get('/getProducts2', [mdAuth.ensureAuth1], controllerProductCompany.getProducts2);
+
+
 module.exports = api;

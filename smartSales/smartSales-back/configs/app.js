@@ -8,6 +8,7 @@ const companyRoutes = require('../src/routes/company.routes');
 const adminRoutes = require('../src/routes/admin.routes');
 const branchRoutes = require('../src/routes/branch.routes');
 const productCompanyRoutes = require('../src/routes/productCompany.routes');
+const productBranchRoutes= require('../src/routes/productBranch.routes');
 
 const app = new express();
 
@@ -20,6 +21,7 @@ app.use('/company', companyRoutes);
 app.use('/admin', adminRoutes);
 app.use('/branch', branchRoutes);
 app.use('/productCompany', productCompanyRoutes);
+app.use('/productBranch', productBranchRoutes);
 
 
 module.exports = app;

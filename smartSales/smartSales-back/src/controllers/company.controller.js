@@ -2,7 +2,9 @@
 const { param } = require('express/lib/request');
 const Company = require('../models/company.model')
 const {validateData, searchCompany, encrypt, checkPassword, checkDataUpdate, checkPermission, searchAdmin, searchCompany1, searchCompanyUsername, searchCompanyName} = require('../utils/validate');
-
+const Branch = require('../models/branch.model');
+const ProductCompany = require('../models/productCompany.model');
+const ProductBranch = require('../models/productBranch.model');
 
 
 
@@ -104,25 +106,31 @@ exports.updateCompanyByAdmin = async (req, res)=>{
 
 //Eliminar Empresa por un ADMIN
 exports.deleteCompanyByAdmin = async(req,res)=>{
-  try {
-      const companyId = req.params.id;
-      const companyExist = await Company.findOne({_id:companyId});
-      if(companyExist){
-          if(companyExist.role === 'ADMIN'){
-              return res.status(400).send({message:'You can not delete an ADMIN'})
-          }else{
-              const deleteCompany = await Company.findOneAndDelete({_id: companyId});
-              deleteCompany.password = undefined;
-              return res.status(200).send({message:'Company deleted', deleteCompany});
-          }
-      }else{
-          return res.status(404).send({message:'Company not found'});
-      }
-  } catch (error) {
-      console.log(error);
-      return error;
-  }
-};
+    try {
+        const companyId = req.params.id;
+        const companyExist = await Company.findOne({_id:companyId});
+        if(companyExist){
+            if(companyExist.role === 'ADMIN'){
+                return res.status(400).send({message:'You can not delete an ADMIN'})
+            }else{
+                const deleteCompany = await Company.findOneAndDelete({_id: companyId});
+  
+                const deleteBranch = await Branch.deleteMany({company: companyId});
+  
+                const deleteProducts = await ProductCompany.deleteMany({company: companyId});
+  
+                const deleteProductsBranch = await ProductBranch.deleteMany({productsCompany: companyId});
+                deleteCompany.password = undefined;
+                return res.status(200).send({message:'Company deleted', deleteCompany});
+            }
+        }else{
+            return res.status(404).send({message:'Company not found'});
+        }
+    } catch (error) {
+        console.log(error);
+        return error;
+    }
+  };
 
 
 

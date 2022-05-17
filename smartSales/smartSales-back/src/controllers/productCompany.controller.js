@@ -1,7 +1,7 @@
 'use strict'
 const { param } = require('express/lib/request');
 const ProductCompany = require('../models/productCompany.model');
-const {validateData, checkPermission1, checkDataUpdate1 } = require('../utils/validate');
+const {validateData, checkPermission1, checkDataUpdate1, orderProducts, orderProducts2 } = require('../utils/validate');
 
 //Agregar un producto
 exports.addProductCompany = async(req, res)=>{
@@ -33,12 +33,26 @@ exports.addProductCompany = async(req, res)=>{
         return error;
     }
 };
-//Mostrar todos los Productos
+//Mostrar todos los Productos de mayor a menor
 exports.getProducts = async (req, res)=>{
     try {
         const companyId = req.company.sub
         const products = await ProductCompany.find({company: companyId});
-        return res.status(200).send({products});
+        const productsOrder = await orderProducts(products);
+        return res.status(200).send({productsOrder});
+    } catch (error) {
+        console.log(error);
+        return error;
+    }
+  };
+
+  //Mostrar productos de menor a mayor
+  exports.getProducts2 = async (req, res)=>{
+    try {
+        const companyId = req.company.sub
+        const products = await ProductCompany.find({company: companyId});
+        const productsOrder = await orderProducts2(products);
+        return res.status(200).send({productsOrder});
     } catch (error) {
         console.log(error);
         return error;
