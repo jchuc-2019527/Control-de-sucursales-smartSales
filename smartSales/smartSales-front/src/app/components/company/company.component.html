@@ -1,0 +1,106 @@
+<app-navbar></app-navbar>
+
+<div class="text-center">
+  <button class="btn btn-success m-3 "
+  data-bs-toggle="modal" data-bs-target="#exampleModal">AGREGAR EMPRESA</button>
+</div>
+
+<div class="hola">
+  <div  class="table-users">
+    <div class="header">EMPRESAS</div>
+
+   <table cellspacing="0">
+      <thead>
+        <tr>
+          <th>Numero</th>
+          <th>Empresa</th>
+          <th>Tipo</th>
+          <th>Username</th>
+          <th></th>
+       </tr>
+      </thead>
+<tbody>
+  <tr *ngFor="let company of companys, let i=index">
+    <td >{{i+1}}</td>
+    <td>{{company.name}}</td>
+    <td>{{company.type}}</td>
+    <td>{{company.username}}</td>
+   <td>
+      <div class="multi-button">
+        <button (click)="getCompany(company._id)" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">Actualizar</button>
+        <button (click)="deleteCompanyByAdmin(company._id)">Eliminar</button>
+        <button >Sucursales
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+            <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+            <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+          </svg>
+        </button>
+      </div>
+    </td>
+ </tr>
+</tbody>
+      </table>
+
+      <!-- Modal add company -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Nueva empresa</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <form #addCompanyForm="ngForm">
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Nombre de la empresa</label>
+                <input [(ngModel)]="company.name" name="name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Tipo</label>
+                <input [(ngModel)]="company.type" name="name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Nombre de usuario</label>
+                <input [(ngModel)]="company.username" name="name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Contraseña</label>
+                <input [(ngModel)]="company.password" name="name" type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              </div>
+            </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button (click)="registerCompanyByAdmin(addCompanyForm)"  type="button" class="btn btn-primary"
+        data-bs-dismiss="modal">Save changes
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Offcanvas   Actualizar-->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Actualizar empresa</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <form *ngIf="companyUpdate">
+      <div class="mb-3">
+        <label for="nameUpdate" class="form-label">Nombre</label>
+        <input [(ngModel)]="companyUpdate.name"  name="name" type="text" class="form-control" id="name" aria-describedby="emailHelp">
+      </div>
+      <div class="mb-3">
+          <label for="type" class="form-label">Tipo de empresa</label>
+          <input [(ngModel)]="companyUpdate.type"  name="type" type="text" class="form-control" id="type" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+          <label for="username" class="form-label">Nombre de usuario</label>
+          <input [(ngModel)]="companyUpdate.username"  name="username" type="text" class="form-control" id="username" aria-describedby="emailHelp">
+        </div>
+
+      <button (click)="updateCompanyByAdmin()" class="btn btn-warning mt -4"> Actualizar</button>
+    </form>
+  </div>
+</div>

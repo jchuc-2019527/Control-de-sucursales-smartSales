@@ -1,0 +1,270 @@
+body {
+    background-color: rgb(255, 0, 0);
+  }
+  .hola{
+    background-color: #91ced4;
+    padding: 28vh;
+  }
+  .header {
+    background-color: #327a81;
+    color: white;
+    font-size: 1.5em;
+    padding: 1rem;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  img {
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+  }
+  .table-users {
+    border: 1px solid #327a81;
+    border-radius: 10px;
+    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+    max-width: calc(100% - 2em);
+    margin: 1em auto;
+    overflow: hidden;
+    width: 800px;
+  }
+  table {
+    width: 100%;
+  }
+  table td, table th {
+    color: #2b686e;
+    padding: 8px;
+  }
+  table td {
+    text-align: center;
+    vertical-align: middle;
+  }
+  table td:last-child {
+    font-size: 0.95em;
+    line-height: 1.4;
+    text-align: left;
+  }
+  table th {
+    background-color: #daeff1;
+    font-weight: 300;
+  }
+  table tr:nth-child(2n) {
+    background-color: white;
+  }
+  table tr:nth-child(2n+1) {
+    background-color: #edf7f8;
+  }
+  @media screen and (max-width: 700px) {
+    table, tr, td {
+      display: block;
+   }
+    td:first-child {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 100px;
+   }
+    td:not(:first-child) {
+      clear: both;
+      margin-left: 100px;
+      padding: 4px 20px 4px 90px;
+      position: relative;
+      text-align: left;
+   }
+    td:not(:first-child):before {
+      color: #91ced4;
+      content: '';
+      display: block;
+      left: 0;
+      position: absolute;
+   }
+    td:nth-child(2):before {
+      content: 'Name:';
+   }
+    td:nth-child(3):before {
+      content: 'Email:';
+   }
+    td:nth-child(4):before {
+      content: 'Phone:';
+   }
+    td:nth-child(5):before {
+      content: 'Comments:';
+   }
+    tr {
+      padding: 10px 0;
+      position: relative;
+   }
+    tr:first-child {
+      display: none;
+   }
+  }
+  @media screen and (max-width: 500px) {
+    .header {
+      background-color: transparent;
+      color: #fff;
+      font-size: 2em;
+      font-weight: 700;
+      padding: 0;
+      text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+   }
+    td:first-child {
+      background-color: #c8e7ea;
+      border-bottom: 1px solid #91ced4;
+      border-radius: 10px 10px 0 0;
+      position: relative;
+      top: 0;
+      transform: translateY(0);
+      width: 100%;
+   }
+    td:not(:first-child) {
+      margin: 0;
+      padding: 5px 1em;
+      width: 100%;
+   }
+    td:not(:first-child):before {
+      font-size: 0.8em;
+      padding-top: 0.3em;
+      position: relative;
+   }
+    td:last-child {
+      padding-bottom: 1rem !important;
+   }
+    tr {
+      background-color: white !important;
+      border: 1px solid #6cbec6;
+      border-radius: 10px;
+      box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+      margin: 0.5rem 0;
+      padding: 0;
+   }
+    .table-users {
+      border: none;
+      box-shadow: none;
+      overflow: visible;
+   }
+  }
+  /* BOTONES*/
+  body {
+    height: 100vh;
+    margin: 0;
+    display: grid;
+    place-items: center;
+  }
+  
+  .multi-button button{
+    height: 29px;
+    width: 125px;
+    background: linear-gradient(to bottom, #6cbec6, #6cbec6);
+    font-weight: bold;
+    color: white;
+    font-size: 1.2rem;
+    border: none;
+    margin: -5px;
+    padding: 0;
+    stroke: black;
+    outline: none;
+  }
+  .multi-button :nth-child(1){
+    border-radius: 20px 0 0 20px;
+  }
+  .multi-button :nth-child(3){
+    border-radius: 0 20px 20px 0;
+  }
+  button:hover{
+    cursor: pointer;
+    filter: drop-shadow(3px 5px 5px rgba(0, 0, 0, 0.45));
+  }
+  button:active{
+    filter: none;
+    transform: scale(.95);
+  }
+  
+  /*OJO :V */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  *:focus,
+  *:active {
+    outline: none !important;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  html,
+  body {
+    display: grid;
+    height: 100%;
+    width: 100%;
+    font-family: "Poppins", sans-serif;
+    place-items: center;
+    background: linear-gradient(315deg, #ffffff, #d7e1ec);
+  }
+  
+  .wrapper {
+    display: inline-flex;
+    list-style: none;
+  }
+  
+  .wrapper .icon {
+    position: relative;
+    background: #ffffff;
+    border-radius: 50%;
+    padding: 15px;
+    margin: 10px;
+    width: 50px;
+    height: 50px;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  .wrapper .tooltip {
+    position: absolute;
+    top: 0;
+    font-size: 14px;
+    background: #ffffff;
+    color: #ffffff;
+    padding: 5px 8px;
+    border-radius: 5px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  .wrapper .tooltip::before {
+    position: absolute;
+    content: "";
+    height: 8px;
+    width: 8px;
+    background: #ffffff;
+    bottom: -3px;
+    left: 50%;
+    transform: translate(-50%) rotate(45deg);
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  .wrapper .icon:hover .tooltip {
+    top: -45px;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  
+  .wrapper .icon:hover span,
+  .wrapper .icon:hover .tooltip {
+    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+  }
+  
+  .wrapper .ojo:hover,
+  .wrapper .ojo:hover .tooltip,
+  .wrapper .ojo:hover .tooltip::before {
+    background: #1877F2;
+    color: #ffffff;
+  }
