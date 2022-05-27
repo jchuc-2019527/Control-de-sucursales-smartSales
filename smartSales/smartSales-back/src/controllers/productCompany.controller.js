@@ -33,11 +33,24 @@ exports.addProductCompany = async(req, res)=>{
         return error;
     }
 };
+//Mostrar un solo producto
+exports.getProductCompany = async (req, res)=>{
+    try {
+        const companyId = req.params.id
+        const product = await ProductCompany.findOne({_id: companyId})
+        return res.status(200).send({product});
+    } catch (error) {
+        console.log(error);
+        return error;
+    }
+  };
+
+
 //Mostrar todos los Productos de mayor a menor
 exports.getProducts = async (req, res)=>{
     try {
-        const companyId = req.company.sub
-        const products = await ProductCompany.find({company: companyId});
+        const productCompanyId = req.company.sub
+        const products = await ProductCompany.find({company: productCompanyId});
         const productsOrder = await orderProducts(products);
         return res.status(200).send({productsOrder});
     } catch (error) {

@@ -1,42 +1,126 @@
 <app-navbar></app-navbar>
 
-<div class="text-center">
-  <button class="btn btn-success m-3 "
-  data-bs-toggle="modal" data-bs-target="#exampleModal">Agregar Producto</button>
+<div class="text-center" >
+  <div class="multi-buttonA"  style = "float: right">
+    <button class="btn btn-success m-3 "
+    data-bs-toggle="modal" data-bs-target="#exampleModal">Agregar Producto</button>
+  </div>
+  <div class="multi-buttonB"  style = "float: right">
+  <button (click)="getProducts2()" class="btn btn-success m-3 " >Ordenar de Menor a Mayor</button>
 </div>
 
+<div class="multi-buttonC"  style = "float: right">
+  <button (click)="getProducts()"class="btn btn-success m-3 ">Ordenar de Mayor a Menor</button>
+</div>
+</div>
+       
 <div class="hola">
+  <div class="formulario-login">
+    <h1 *ngIf="company">{{company.name}}</h1>
+    <img src="https://pqs.pe/wp-content/uploads/2021/02/PQS-empresas-definicion.jpg" class="icon" alt="icon Image">
+</div>
+<br>
   <div class="table-users">
     <div class="header">Productos Empresa</div>
 
     <table cellspacing="0">
        <tr>
           <th>Numero</th>
-          <th>Nombre</th>
+          <th> Nombre </th>
           <th>Proveedor</th>
           <th>stock</th>
           <th></th>
+          <th></th>
+          <th></th>
        </tr>
-       
 
-       <tr>
-          <td ></td>
-          <td></td>
-          <td></td>
-          <td></td>
+       <tr *ngFor="let productCompany of productCompanys, let i=index">
+          <td >{{i+1}}</td>
+          <td>{{productCompany.name}}</td>
+          <td>{{productCompany.supplier}}</td>
+          <td>{{productCompany.stock}}</td>
           <td>
             <div class="multi-button">
-              <button>Actualizar</button>
-              <button>Eliminar</button>
+              <button (click)="getProductCompany(productCompany._id)" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">Actualizar</button>
+              
+            </div>
+          </td>
+          <td>
+            <div class="multi-button2">
+              <button (click)="deleteProduct(productCompany._id)">Eliminar</button>
+            </div>
+
+          </td>
+          <td>
+            <div class="multi-button3">
               <button > Enviar
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send-fill" viewBox="0 0 16 16">
                     <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z"/>
                   </svg>
               </button>
-              
             </div>
+
           </td>
        </tr>
       </table>
     </div>
   </div>
+<!-- Modal Agregar Producto -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Agregar Producto</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <form #addProductCompanyForm="ngForm">
+              <div class="mb-3">
+                <label for="name" class="form-label">Nombre del producto</label>
+                <input [(ngModel)]="productCompany.name" name="name" type="text" class="form-control" id="name" aria-describedby="emailHelp">
+              </div>
+              <div class="mb-3">
+                <label for="supplier" class="form-label">Proveedor</label>
+                <input [(ngModel)]="productCompany.supplier" name="supplier" type="text" class="form-control" id="supplier" aria-describedby="emailHelp">
+              </div>
+              <div class="mb-3">
+                <label for="stock" class="form-label">Stock</label>
+                <input [(ngModel)]="productCompany.stock" name="stock" type="text" class="form-control" id="stock" aria-describedby="emailHelp">
+              </div>
+            </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button (click)="addProductCompany(addProductCompanyForm)"  type="button" class="btn btn-primary"
+        data-bs-dismiss="modal">Save changes
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Offcanvas   Actualizar-->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Actualizar empresa</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <form *ngIf="productCompanyUpdate">
+      <div class="mb-3">
+        <label for="nameUpdate" class="form-label">Nombre del Producto</label>
+        <input [(ngModel)]="productCompanyUpdate.name"  name="name" type="text" class="form-control" id="name" aria-describedby="emailHelp">
+      </div>
+      <div class="mb-3">
+          <label for="supplier" class="form-label">Proveedor</label>
+          <input [(ngModel)]="productCompanyUpdate.supplier"  name="supplier" type="text" class="form-control" id="supplier" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+          <label for="stock" class="form-label">Stock</label>
+          <input [(ngModel)]="productCompanyUpdate.stock"  name="stock" type="text" class="form-control" id="stock" aria-describedby="emailHelp">
+        </div>
+
+      <button (click)="updateProduct()" class="btn btn-warning mt -4"> Actualizar</button>
+    </form>
+  </div>
+</div>

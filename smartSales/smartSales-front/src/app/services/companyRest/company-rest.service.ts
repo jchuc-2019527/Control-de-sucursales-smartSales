@@ -32,4 +32,5 @@ export class CompanyRestService {
    deleteCompanyByAdmin(id: string){
     return this.http.delete(environment.baseUrl + 'company/deleteCompanyByAdmin/' + id, {headers: this.httOptions});
    };
+
 }

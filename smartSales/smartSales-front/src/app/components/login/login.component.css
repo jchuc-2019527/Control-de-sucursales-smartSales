@@ -1,7 +1,7 @@
 body {
   font-family: "Poppins", sans-serif;
   height: 100vh;
-  background-color: #4e4d4c;
+  background-image: url('../../../assets/img/fondoLogin2.jpg') ;
   background-size: cover;
 
 }
@@ -82,7 +82,7 @@ html {
   /* FORM TYPOGRAPHY*/
   
   input[type=button], input[type=submit], input[type=reset]  {
-    background: linear-gradient( #2eb2ff, #a1f5f8);
+    background: linear-gradient( #17202A, #ABB2B9);
     border: none;
     color: white;
     padding: 15px 80px;

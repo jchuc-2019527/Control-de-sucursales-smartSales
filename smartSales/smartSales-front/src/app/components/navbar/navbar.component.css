@@ -1,5 +1,14 @@
 @import url("//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 
+@font-face {
+  font-family: digofa;
+  src: url(../../../assets/font/PASTI-Oblique.otf);
+}
+#text{
+  font-family: digofa;
+
+}
+
 .navbar-icon-top .navbar-nav .nav-link > .fa {
   position: relative;
   width: 36px;
