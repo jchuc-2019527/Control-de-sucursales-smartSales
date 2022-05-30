@@ -1,40 +1,54 @@
+
+
+
 <app-navbar></app-navbar>
 
-<div class="text-center" >
-  <div class="multi-buttonA"  style = "float: right">
-    <button class="btn btn-success m-3 "
-    data-bs-toggle="modal" data-bs-target="#exampleModal">Agregar Producto</button>
+<div>
+  <div class="text-center" >
+    <div class="multi-buttonA"  style = "float: right">
+      <button id="b" class="btn btn-success m-3 "
+      data-bs-toggle="modal" data-bs-target="#exampleModal">Agregar Producto</button>
+    </div>
+    <div class="multi-buttonB"  style = "float: right">
+    <button id="b2" (click)="getProducts2()" class="btn btn-success m-3 " >Ordenar de Menor a Mayor</button>
+    </div>
+  
+    <div class="multi-buttonC"  style = "float: right">
+    <button id="b2" (click)="getProducts()"class="btn btn-success m-3 ">Ordenar de Mayor a Menor</button>
+    </div>
+  
   </div>
-  <div class="multi-buttonB"  style = "float: right">
-  <button (click)="getProducts2()" class="btn btn-success m-3 " >Ordenar de Menor a Mayor</button>
+
 </div>
 
-<div class="multi-buttonC"  style = "float: right">
-  <button (click)="getProducts()"class="btn btn-success m-3 ">Ordenar de Mayor a Menor</button>
-</div>
-</div>
+
+
        
 <div class="hola">
-  <div class="formulario-login">
-    <h1 *ngIf="company">{{company.name}}</h1>
-    <img src="https://pqs.pe/wp-content/uploads/2021/02/PQS-empresas-definicion.jpg" class="icon" alt="icon Image">
-</div>
+  <div class="text-center" >
+    <h1 *ngIf="company" class="m-4" id="titulo">{{name}}</h1>
+  </div>
 <br>
-  <div class="table-users">
+  <div class="table-users" style="width: 100%">
     <div class="header">Productos Empresa</div>
 
     <table cellspacing="0">
-       <tr>
+      <thead>
+        <tr>
           <th>Numero</th>
           <th> Nombre </th>
           <th>Proveedor</th>
           <th>stock</th>
-          <th></th>
-          <th></th>
-          <th></th>
+          <th style="width: 15rem;"></th>
+          <th style="width: 15rem;"></th>
+          <th style="width: 15rem;"></th>
+          
        </tr>
 
-       <tr *ngFor="let productCompany of productCompanys, let i=index">
+      </thead>
+  
+      <tbody>
+        <tr *ngFor="let productCompany of productCompanys, let i=index">
           <td >{{i+1}}</td>
           <td>{{productCompany.name}}</td>
           <td>{{productCompany.supplier}}</td>
@@ -61,7 +75,11 @@
             </div>
 
           </td>
+   
        </tr>
+
+      </tbody>
+       
       </table>
     </div>
   </div>

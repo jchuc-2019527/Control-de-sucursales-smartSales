@@ -11,12 +11,35 @@ import { environment } from 'src/environments/environment';
 export class CompanyRestService {
   httOptions = new HttpHeaders({
     'Content-Type': 'application/json',
-    'Authorization': this.adminRest.getToken()
+    'Authorization': this.getToken()
   })
   constructor(
     private http: HttpClient,
-    private adminRest: AdminRestService
+   
   ) {}
+
+  getToken(){
+    let globalToken = localStorage.getItem('token');
+    let token;
+    if(globalToken != undefined){
+      token = globalToken
+    }else{
+      token= '';
+    }
+    return token;
+  };
+
+  getIdentity(){
+    let globalIdentity = localStorage.getItem('identity');
+    let identity;
+    if(globalIdentity != undefined){
+      identity = JSON.parse(globalIdentity);
+    }else{
+      identity = '';
+    }
+    return identity
+  };
+
   getCompany(id: string){
     return this.http.get(environment.baseUrl + 'company/getCompany/' + id, {headers:this.httOptions});
   };

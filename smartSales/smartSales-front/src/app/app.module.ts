@@ -7,9 +7,11 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { ProductCompanyComponent } from './product-company/product-company.component';
+import { ProductCompanyComponent } from './components/product-company/product-company.component';
 import { CompanyComponent } from './components/company/company.component';
 import { BranchComponent } from './components/branch/branch.component';
+import { ProductBranchComponent } from './components/product-branch/product-branch.component';
+import { BranchByAdminComponent } from './components/branch-by-admin/branch-by-admin.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { BranchComponent } from './components/branch/branch.component';
     NavbarComponent,
     ProductCompanyComponent,
     CompanyComponent,
-    BranchComponent
+    BranchComponent,
+    ProductBranchComponent,
+    BranchByAdminComponent
   ],
   imports: [
     BrowserModule,

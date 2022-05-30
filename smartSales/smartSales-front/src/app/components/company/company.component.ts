@@ -23,6 +23,7 @@ export class CompanyComponent implements OnInit {
   ngOnInit(): void {
   this.getCompanys();
   }
+  
   getCompany(id: string){
     this.companyRest.getCompany(id).subscribe({
       next:(res:any)=>{this.companyUpdate = res.company},

@@ -1,51 +1,66 @@
 <app-navbar></app-navbar>
 <div class="text-center">
   <div class="multi-buttonA"  style = "float: right">
-    <button class="btn btn-success m-3 "
+    <button id="b" class="btn btn-success m-3 "
     data-bs-toggle="modal" data-bs-target="#exampleModal">AGREGAR EMPRESA</button>
   </div>
 </div>
 <div class="hola">
-  <div class="formulario-login">
-    <img src="https://pqs.pe/wp-content/uploads/2021/02/PQS-empresas-definicion.jpg" class="icon" alt="icon Image">
-</div>
-<br>
-  <div  class="table-users">
-    <div class="header">EMPRESAS</div>
-
-   <table cellspacing="0">
-      <thead>
-        <tr>
-          <th>Numero</th>
-          <th>Empresa</th>
-          <th>Tipo</th>
-          <th>Username</th>
-          <th></th>
-       </tr>
-      </thead>
-<tbody>
-  <tr *ngFor="let company of companys, let i=index">
-    <td >{{i+1}}</td>
-    <td>{{company.name}}</td>
-    <td>{{company.type}}</td>
-    <td>{{company.username}}</td>
-   <td>
-      <div class="multi-button">
-        <button (click)="getCompany(company._id)" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">Actualizar</button>
-        <button (click)="deleteCompanyByAdmin(company._id)">Eliminar</button>
-        <button >Sucursales
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
-            <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
-            <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
-          </svg>
-        </button>
+  <br>
+    <div class="table-users " style="width: 100%">
+      <div class="header">Empresas</div>
+  
+      <table cellspacing="0">
+        <thead>
+          <tr>
+            <th >ID</th>
+            <th> Nombre </th>
+            <th>Tipo</th>
+            <th style="width: 13rem;"></th>
+            <th style="width: 13rem;"></th>
+            <th style="width: 13rem;"></th>
+            
+         </tr>
+  
+        </thead>
+    
+        <tbody>
+          <tr *ngFor="let company of companys, let i=index">
+            <td >{{i+1}}</td>
+            <td>{{company.name}}</td>
+            <td>{{company.type}}</td>
+           
+            <td>
+              <div class="multi-button">
+                <button (click)="getCompany(company._id)" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">Actualizar</button>
+                
+              </div>
+            </td>
+            <td>
+              <div class="multi-button2">
+                <button (click)="deleteCompanyByAdmin(company._id)">Eliminar</button>
+              </div>
+  
+            </td>
+            <td>
+              <div class="multi-button3">
+                <button [routerLink]="['/branchByAdmin/' + company._id]"> Sucursales
+                  <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" class="bi bi-box-seam" viewBox="0 0 16 16">
+                    <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z"/>
+                  </svg>
+                </button>
+              </div>
+  
+            </td>
+         </tr>
+  
+        </tbody>
+         
+        </table>
       </div>
-    </td>
- </tr>
-</tbody>
-      </table>
+    </div>
 
-      <!-- Modal add company -->
+<!-- Modal add company -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -82,6 +97,8 @@
     </div>
   </div>
 </div>
+
+   
 
 <!--Offcanvas   Actualizar-->
 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">

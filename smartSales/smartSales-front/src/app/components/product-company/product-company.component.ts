@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
-import { productCompanyModel } from '../models/productCompany.model';
-import { ProductCompanyRestService } from '../services/productCompanyRest/product-company-rest.service';
+import { productCompanyModel } from '../../models/productCompany.model';
+import { ProductCompanyRestService } from '../../services/productCompanyRest/product-company-rest.service';
+import { companyModel } from '../../models/company.model';
+import { CompanyRestService } from '../../services/companyRest/company-rest.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-product-company',
@@ -12,17 +15,34 @@ export class ProductCompanyComponent implements OnInit {
   productCompanys: any =['productsOrder2'] ;
   productCompany: productCompanyModel;
   productCompanyUpdate: any;
+
   company: any;
+  name: string=''
+  
+
   constructor(
-    private productCompanyRest: ProductCompanyRestService
+    private productCompanyRest: ProductCompanyRestService,
+    private companyRest: CompanyRestService,
+    private activateRoute : ActivatedRoute
   ) { 
+
     this.productCompany = new productCompanyModel('','','',0,'');
+    this.company = new companyModel( '', '', '', '', '', '' );
   }
 
   ngOnInit(): void {
     this.getProducts();
     this.getProducts2();
+    this.name = this.companyRest.getIdentity().name
+    //this.getCompany();
   }
+
+/*getCompany(){
+  this.companyRest.getCompany(this.idCompany).subscribe({
+    next:(res:any)=>{this.company = res.company},
+    error:(err)=>{alert(err.error.message)}
+  })
+};*/
 
   getProducts(){
     this.productCompanyRest.getProducts().subscribe({

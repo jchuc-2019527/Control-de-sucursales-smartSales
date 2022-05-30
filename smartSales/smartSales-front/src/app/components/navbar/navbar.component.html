@@ -43,12 +43,7 @@
           <span class="sr-only"></span>
           </a>
       </li>
-      <li class="nav-item active">
-        <a >
-          <li><hr class="dropdown-divider"></li>
-            <li><a (click)="logOut()" class="dropdown-item" routerLink="/login">Log Out</a></li>
-          </a>
-      </li>
+      
       
      
     </ul>
@@ -60,6 +55,17 @@
               <h6>Perfil</h6>
               <span class="sr-only"></span>
               </a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Cerrar Sesión
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              
+              <li><hr class="dropdown-divider"></li>
+              <li><a (click)="logOut()" class="dropdown-item" routerLink="/login">Salir</a></li>
+            </ul>
           </li>
     </ul>
  
