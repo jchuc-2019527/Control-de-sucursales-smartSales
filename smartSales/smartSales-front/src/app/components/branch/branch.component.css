@@ -444,6 +444,18 @@ html {
     width: 20rem;
     
   }
+
+@font-face {
+  font-family: digofa;
+  src: url(../../../assets/font/Digofa-RegPersonal.otf);
+}
+
+#titulo{
+  padding-bottom: 4rem;
+  font-family: digofa ;
+  font-size: 5rem;
+
+}
    /*----------------------------------------------------------------------------------*/
   /*modal*/
 

@@ -466,68 +466,87 @@ button:active{
   }
 
   /*Modal Sale*/
-  .modal-wrapper {
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0; 
-    left: 0;
-    background: rgba(41, 171, 164, 0.8);
-    visibility: hidden;
-    opacity: 0;
-    transition: all 0.25s ease-in-out;
-  }
-  
-  .modal-wrapper.open {
-    opacity: 1;
-    visibility: visible;
-  }
-  
   .modal {
-    width: 600px;
-    height: 400px;
-    display: block;
-    margin: 50% 0 0 -300px;
-    position: relative;
-    top: 50%; 
-    left: 50%;
-    background: #fff;
-    opacity: 0;
-    transition: all 0.5s ease-in-out;
-  }
-  
-  .modal-wrapper.open .modal {
-    margin-top: -200px;
-    opacity: 1;
-  }
-  
-  .head { 
-    width: 90%;
-    height: 32px;
-    padding: 12px 30px;
+    border-radius: 7px;
     overflow: hidden;
-    background: #e2525c;
-  }
+    background-color: transparent; }
+    .modal .logo a img {
+      width: 30px; }
+    .modal .modal-content {
+      background-color: transparent;
+      border: none;
+      border-radius: 7px; }
+      .modal .modal-content .modal-body {
+        border-radius: 7px;
+        overflow: hidden;
+        background-color: #b0eafc;
+        padding-left: 0px;
+        padding-right: 0px;
+        -webkit-box-shadow: 0 10px 50px -10px rgba(0, 0, 0, 0.9);
+        box-shadow: 0 10px 50px -10px rgba(0, 0, 0, 0.9); }
+        .modal .modal-content .modal-body h2 {
+          font-size: 18px; }
+        .modal .modal-content .modal-body p {
+          color: rgb(119, 119, 119);
+          font-size: 14px; }
+        .modal .modal-content .modal-body h3 {
+          color: #000;
+          font-size: 22px; }
+        .modal .modal-content .modal-body .close-btn {
+          color: #000; }
+        .modal .modal-content .modal-body .promo-img {
+          -webkit-box-flex: 0;
+          -ms-flex: 0 0 50%;
+          flex: 0 0 50%; }
+    .modal .cancel {
+      color: gray;
+      font-size: 14px; }
+    .modal .btn-primary {
+      padding-top: 10px;
+      padding-bottom: 10px; }
   
-  .btn-close {
-    font-size: 28px;
-    display: block;
-    float: right;
-    color: #fff;
-  }
+  .form-control {
+    border: transparent;
+    -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+    border: none; }
+    .form-control:active, .form-control:focus, .form-control:hover {
+      -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2); }
   
-  .content {
-    padding: 10%;
-  }
+  .btn {
+    border-radius: 4px;
+    border: none; }
+    .btn:active, .btn:focus {
+      outline: none;
+      -webkit-box-shadow: none !important;
+      box-shadow: none !important; }
   
-  .good-job {
-    text-align: center;
-    font-family: 'Montserrat', Arial,       Helvetica, sans-serif;
-    color: #e2525c;
-  }
-  .good-job .fa-thumbs-o-up {
-    font-size: 60px;
-  }
-  .good-job h1 {
-    font-size: 45px;
-  }
+  .custom-select {
+    border: none;
+    -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2); }
+    .custom-select:active, .custom-select:focus, .custom-select:hover {
+      -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2); }
+  
+  .bg-image {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; }
+  
+  .logo img {
+    width: 70px; }
+  
+  .custom-note {
+    color: #999; }
+    .custom-note a {
+      color: #555;
+      font-weight: 900 !important; }
+  
+  .btn-close{
+    margin-right: 10px;
+    margin-top: 10px;
+  } 
+    
+    

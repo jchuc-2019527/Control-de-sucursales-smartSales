@@ -1,7 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { AdminRestService } from '../adminRest/admin-rest.service';
+
+import { CompanyRestService } from '../companyRest/company-rest.service';
 
 
 @Injectable({
@@ -10,11 +11,11 @@ import { AdminRestService } from '../adminRest/admin-rest.service';
 export class ProductCompanyRestService {
   httOptions = new HttpHeaders({
     'Content-Type': 'application/json',
-    'Authorization': this.adminRest.getToken()
+    'Authorization': this.companyRest.getToken()
   })
   constructor(
     private http: HttpClient,
-    private adminRest: AdminRestService
+    private companyRest: CompanyRestService
   ) {}
 
   getProducts(){

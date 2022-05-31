@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { AdminRestService } from '../adminRest/admin-rest.service';
+import { CompanyRestService } from '../companyRest/company-rest.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,11 +9,11 @@ import { AdminRestService } from '../adminRest/admin-rest.service';
 export class BranchRestService {
   httOptions = new HttpHeaders({
     'Content-Type': 'application/json',
-    'Authorization': this.adminRest.getToken()
+    'Authorization': this.companyRest.getToken()
   })
   constructor(
     private http: HttpClient,
-    private adminRest: AdminRestService
+    private companyRest : CompanyRestService
   ) { }
 
   getBranchs(){

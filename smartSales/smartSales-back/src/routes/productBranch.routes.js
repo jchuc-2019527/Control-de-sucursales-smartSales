@@ -10,4 +10,5 @@ api.post('/addSale/:id', mdAuth.ensureAuth1, productBranchController.addSale);
 api.get('/getProductsBranch/:id', mdAuth.ensureAuth1, productBranchController.getProductsBranch);
 api.get('/getProductsBranch2/:id', mdAuth.ensureAuth1, productBranchController.getProductsBranch2);
 
+api.get('/getProductBranch/:idProduct', mdAuth.ensureAuth1, productBranchController.getProductBranch)
 module.exports = api;

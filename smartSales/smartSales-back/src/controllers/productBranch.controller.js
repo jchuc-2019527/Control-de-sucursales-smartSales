@@ -67,7 +67,7 @@ exports.addSale = async (req, res)=>{
 exports.getProductsBranch = async (req, res) =>{
     try {
         const branchId = req.params.id;
-        const productsBranch = await ProductBranch.find({branch: branchId});
+        const productsBranch = await ProductBranch.find({branch: branchId}).populate('productCompany')
         const productsOrder = await orderProducts(productsBranch);
         return res.status(200).send({productsOrder});
     }catch (err){
@@ -79,11 +79,23 @@ exports.getProductsBranch = async (req, res) =>{
 exports.getProductsBranch2 = async (req, res) =>{
     try {
         const branchId = req.params.id;
-        const productsBranch = await ProductBranch.find({branch: branchId});
+        const productsBranch = await ProductBranch.find({branch: branchId}).populate('productCompany')
         const productsOrder = await orderProducts2(productsBranch);
         return res.status(200).send({productsOrder});
     }catch (err){
         console.log(err);
         return err;
     }
-}
+};
+ exports.getProductBranch= async (req,res) =>{
+     try {
+        const productBranchId = req.params.idProduct
+        const productBranch = await ProductBranch.findOne({_id: productBranchId})
+        return res.status(200).send({productBranch});
+         
+     } catch (error) {
+         console.log(error)
+         return error;
+
+     }
+ }

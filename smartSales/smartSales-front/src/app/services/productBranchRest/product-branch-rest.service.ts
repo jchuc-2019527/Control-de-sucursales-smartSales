@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AdminRestService } from '../adminRest/admin-rest.service';
+import { CompanyRestService } from '../companyRest/company-rest.service';
 import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
@@ -8,13 +9,17 @@ import { environment } from 'src/environments/environment';
 export class ProductBranchRestService {
   httOptions = new HttpHeaders({
     'Content-Type': 'application/json',
-    'Authorization': this.adminRest.getToken()
+    'Authorization': this.companyRest.getToken()
   }) 
 
   constructor(
     private httP: HttpClient,
-    private adminRest: AdminRestService
+    private companyRest: CompanyRestService
   ) { }
+
+  getProductBranch(idProduct: string){
+    return this.httP.get(environment.baseUrl + 'productBranch/getProductBranch/' + idProduct, {headers:this.httOptions})
+  }
 
   getProductsBranch(id: string){
     return this.httP.get(environment.baseUrl + 'productBranch/getProductsBranch/' + id, {headers:this.httOptions})
@@ -28,8 +33,8 @@ export class ProductBranchRestService {
     return this.httP.post(environment.baseUrl + 'productBranch/addProductBranch', {headers:this.httOptions})
   };
 
-  addSale(id: string){
-    return this.httP.post(environment.baseUrl + 'productBranch/addSale/' + id, {headers:this.httOptions} )
+  addSale(id: string, params:{}){
+    return this.httP.post(environment.baseUrl + 'productBranch/addSale/' + id, params, {headers:this.httOptions} )
   };
   
 }

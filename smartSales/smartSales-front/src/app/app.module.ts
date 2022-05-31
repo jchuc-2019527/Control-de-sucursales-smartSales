@@ -12,6 +12,7 @@ import { CompanyComponent } from './components/company/company.component';
 import { BranchComponent } from './components/branch/branch.component';
 import { ProductBranchComponent } from './components/product-branch/product-branch.component';
 import { BranchByAdminComponent } from './components/branch-by-admin/branch-by-admin.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { BranchByAdminComponent } from './components/branch-by-admin/branch-by-a
     CompanyComponent,
     BranchComponent,
     ProductBranchComponent,
-    BranchByAdminComponent
+    BranchByAdminComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

@@ -7,6 +7,7 @@ import { CompanyComponent } from './components/company/company.component';
 import { ProductCompanyComponent } from './components/product-company/product-company.component';
 import { ProductBranchComponent } from './components/product-branch/product-branch.component';
 import { BranchByAdminComponent } from './components/branch-by-admin/branch-by-admin.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const routes: Routes = [
   {path: '', component:LoginComponent},
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path: 'branch', component: BranchComponent},
   {path: 'productCompany', component: ProductCompanyComponent},
   {path: 'productBranch/:id', component:ProductBranchComponent},
-  {path: 'branchByAdmin/:id', component:BranchByAdminComponent}
+  {path: 'branchByAdmin/:id', component:BranchByAdminComponent},
+  {path: '**', component:NotFoundComponent}
 ];
 
 @NgModule({
