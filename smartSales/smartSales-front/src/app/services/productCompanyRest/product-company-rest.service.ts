@@ -40,4 +40,6 @@ export class ProductCompanyRestService {
    deleteProduct(id: string){
     return this.http.delete(environment.baseUrl + 'productCompany/deleteProduct/' + id, {headers: this.httOptions});
    };
+
+
 }

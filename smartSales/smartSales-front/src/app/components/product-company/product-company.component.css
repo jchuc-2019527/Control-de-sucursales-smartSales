@@ -551,4 +551,38 @@ button:active{
   margin-top: 10px;
 } 
   
-  
+/*Enviar Producto a Sucursal*/
+@font-face {
+    font-family: pasti;
+    src: url(../../../assets/font/PASTI-Oblique.otf);
+  }
+
+  @font-face {
+    font-family: digofa;
+    src: url(../../../assets/font/Digofa-RegPersonal.otf);
+  }
+
+
+
+#color{
+    background-color: rgb(67, 67, 63);
+}
+#texto{
+    color: white;
+    font-family: pasti;
+}
+
+
+#b {
+    background-color: #17A589; 
+    color: black; 
+    border: 4px solid #0E6655;
+
+}
+#b:hover {
+    background-color: #73C6B6;
+
+}
+#sucursalName{
+    font-family: digofa;
+}

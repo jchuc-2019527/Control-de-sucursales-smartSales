@@ -70,7 +70,7 @@ export class ProductBranchComponent implements OnInit {
       error: (err) => console.log(err.error.message || err.error)
     })
   };
-
+/*
   addProductBranch(addProductForm: any){
     this.productBranchRest.addProductBranch().subscribe({
       next:(res:any)=>{
@@ -87,7 +87,7 @@ export class ProductBranchComponent implements OnInit {
       error: (err) => alert(err.error.message || err.error)
     })
   };
-
+*/
   addSale(addSaleForm:any){
     this.productBranchRest.addSale(this.product._id, this.sale).subscribe({
       next:(res:any)=>{

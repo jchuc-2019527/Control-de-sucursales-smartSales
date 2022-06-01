@@ -4,7 +4,11 @@ import { productCompanyModel } from '../../models/productCompany.model';
 import { ProductCompanyRestService } from '../../services/productCompanyRest/product-company-rest.service';
 import { companyModel } from '../../models/company.model';
 import { CompanyRestService } from '../../services/companyRest/company-rest.service';
+import { ProductBranchRestService } from 'src/app/services/productBranchRest/product-branch-rest.service';
 import { ActivatedRoute } from '@angular/router';
+import { branchModel } from 'src/app/models/branch.model';
+import { BranchRestService } from 'src/app/services/branchRest/branch-rest.service';
+
 
 @Component({
   selector: 'app-product-company',
@@ -18,31 +22,35 @@ export class ProductCompanyComponent implements OnInit {
 
   company: any;
   name: string=''
+
+  branchs: any =[];
+  branch: branchModel;
+
+
   
 
   constructor(
     private productCompanyRest: ProductCompanyRestService,
     private companyRest: CompanyRestService,
-    private activateRoute : ActivatedRoute
+    private activateRoute : ActivatedRoute,
+    private branchRest: BranchRestService,
+    private productBranchRest: ProductBranchRestService,
+
   ) { 
 
     this.productCompany = new productCompanyModel('','','',0,'');
     this.company = new companyModel( '', '', '', '', '', '' );
+    this.branch = new branchModel('','','','');
   }
 
   ngOnInit(): void {
     this.getProducts();
     this.getProducts2();
+    this.getBranchs();
     this.name = this.companyRest.getIdentity().name
-    //this.getCompany();
   }
 
-/*getCompany(){
-  this.companyRest.getCompany(this.idCompany).subscribe({
-    next:(res:any)=>{this.company = res.company},
-    error:(err)=>{alert(err.error.message)}
-  })
-};*/
+
 
   getProducts(){
     this.productCompanyRest.getProducts().subscribe({
@@ -120,6 +128,32 @@ export class ProductCompanyComponent implements OnInit {
         timer: 4000,
         position:'center'
       })
+    })
+  };
+  getBranchs(){
+    this.branchRest.getBranchs().subscribe({
+      next:(res:any)=>{
+        this.branchs = res.branchs;
+        console.log(this.branchs);
+      },
+      error: (err) => console.log(err.error.message || err.error)
+    })
+  };
+
+  addProductBranch(addProductForm: any){
+  this.productBranchRest.addProductBranch().subscribe({
+      next:(res:any)=>{
+        Swal.fire({
+          title: res.message,
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 2000,
+          position:'center'
+        })
+        this.getBranchs()
+        addProductForm.reset()
+      },
+      error: (err) => alert(err.error.message || err.error)
     })
   };
 
