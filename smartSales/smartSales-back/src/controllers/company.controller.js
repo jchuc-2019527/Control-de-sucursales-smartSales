@@ -84,7 +84,7 @@ exports.updateCompanyByAdmin = async (req, res)=>{
               const checkData = await checkDataUpdate(params);
           if(checkData === false){
               return res.send({message:'Unable to update this data'});
-          }else{
+          }else{  
               const companyExistUsername = await searchCompanyUsername(params.username);
               const companyExistName = await searchCompanyName(params.name);
               if(!companyExistUsername && !companyExistName ){

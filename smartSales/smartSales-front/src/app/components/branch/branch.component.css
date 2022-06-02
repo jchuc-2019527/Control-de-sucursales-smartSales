@@ -20,9 +20,12 @@ html {
     text-transform: uppercase;
   }
   img {
-    border-radius: 50%;
-    height: 60px;
-    width: 60px;
+    height: 3.3rem;
+    width: 3.3rem;
+  }
+  img:hover{
+    height: 2.5rem;
+    width: 2.5rem;
   }
   .table-users {
     border: 1px solid #327a81;
@@ -439,7 +442,7 @@ html {
   }
   
   #b{
-    border: solid 5px #D35400 ;
+    border: solid 8px #D35400 ;
     height: 3rem;
     width: 20rem;
     
@@ -472,7 +475,7 @@ html {
     .modal .modal-content .modal-body {
       border-radius: 7px;
       overflow: hidden;
-      background-color: #b0eafc;
+      background-color: #A9CCE3;
       padding-left: 0px;
       padding-right: 0px;
       -webkit-box-shadow: 0 10px 50px -10px rgba(0, 0, 0, 0.9);
@@ -540,4 +543,44 @@ html {
 .btn-close{
   margin-right: 10px;
   margin-top: 10px;
+}
+
+/*Select*/
+.box select {
+  background-color: #FCF3CF;
+  color: black;
+  padding: 7px;
+  width: 250px;
+  border: none;
+  font-size: 18px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+
+  outline: none;
+}
+
+.box::before {
+  font-family: FontAwesome;
+  top: 0;
+  right: 0;
+  width: 20%;
+  height: 100%;
+  text-align: center;
+  font-size: 28px;
+  line-height: 45px;
+  color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+}
+
+.box:hover::before {
+  color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.box select option {
+  padding: 30px;
+}
+
+#name{
+  padding: 0.6rem;
 }

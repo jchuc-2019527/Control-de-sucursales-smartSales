@@ -1,9 +1,11 @@
-<app-navbar></app-navbar>
+<body>
+  
 
+<app-navbar></app-navbar>
 <div>
   <div class="text-center" >
     <div class="multi-buttonA"  style = "float: right">
-      <button id="b2" class="btn btn-success m-3 "
+      <button id="b" class="btn btn-success m-3 "
       data-bs-toggle="modal" data-bs-target="#exampleModalCenter" >Agregar Producto</button>
     </div>
     <div class="multi-buttonB"  style = "float: right">
@@ -33,9 +35,10 @@
           <th> Nombre </th>
           <th>Proveedor</th>
           <th>stock</th>
-          <th style="width: 15rem;"></th>
-          <th style="width: 15rem;"></th>
-          <th style="width: 15rem;"></th>
+          <th style="width: 15rem;">Actualizar</th>
+          <th style="width: 15rem;">Eliminar</th>
+          <th style="width: 15rem;">Enviar producto</th>
+          
           
        </tr>
 
@@ -47,29 +50,27 @@
           <td>{{productCompany.name}}</td>
           <td>{{productCompany.supplier}}</td>
           <td>{{productCompany.stock}}</td>
+          
+
           <td>
-            <div class="multi-button">
-              <button (click)="getProductCompany(productCompany._id)" data-bs-toggle="modal" data-bs-target="#exampleModalCenter2" aria-controls="offcanvasExample">Actualizar</button>
-              
+            <div>
+              <i><img src="../../../assets/img/actualizar (1).png" alt="" width="20rem" height="20rem" (click)="getProductCompany(productCompany._id)" data-bs-toggle="modal" data-bs-target="#exampleModalCenter2" aria-controls="offcanvasExample"></i>
+
             </div>
           </td>
           <td>
-            <div class="multi-button2">
-              <button (click)="deleteProduct(productCompany._id)">Eliminar</button>
+            <div>
+              <i><img src="../../../assets/img/eliminar.png" alt="" width="20rem" height="20rem"(click)="deleteProduct(productCompany._id)"></i>
             </div>
+          
 
           </td>
           <td>
-            <div class="multi-button3">
-              <button (click)="getProductCompany(productCompany._id)" data-bs-toggle="modal" data-bs-target="#modalProductBranch" > Enviar
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send-fill" viewBox="0 0 16 16">
-                    <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z"/>
-                  </svg>
-              </button>
+            <div>
+              <i><img src="../../../assets/img/envio-gratis.png" alt="" width="20rem" height="20rem"(click)="getProductCompany(productCompany._id)" data-bs-toggle="modal" data-bs-target="#modalProductBranch"></i>
             </div>
 
           </td>
-   
        </tr>
 
       </tbody>
@@ -100,7 +101,7 @@
               </div>
               <div class="form-group">
                 <label for="stock">Stock</label>
-                <input [(ngModel)]="productCompany.stock"  name="stock" type="text" class="form-control" id="stock" placeholder="stock">
+                <input [(ngModel)]="productCompany.stock"  name="stock" type="number" class="form-control" id="stock" placeholder="stock">
               </div>
 
               <div class="form-group">
@@ -155,36 +156,45 @@
   </div>
 </div>
 
+
+
 <!-- Modal add productBranch -->
-<div class="modal fade" id="modalProductBranch" tabindex="-1" aria-labelledby="exampleModa2" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header" >
-        <h5 class="modal-title" id="exampleModalLabel">Enviar Producto | Seleccione Sucursal</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body" id="color">
-          <form #addProductForm="ngForm">
+<div class="modal fade" id="modalProductBranch" tabindex="-1" role="dialog" aria-labelledby="modalProductBranch" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content rounded -0">
+      <div class="modal-body py-0">
+        <button  style="float:right" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="d-flex main-content">
+          <div class="bg-image promo-img mr-3" style="background-image: url('../../../assets/img/addpBranch.jpg');">
+          </div>
+          <div class="content-text p-4">
+            <h3>Agregar producto a sucursal</h3>
+            <br>
+            <form #addProductForm="ngForm">
               <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label" id="texto">Ingrese la cantidad</label>
-                <input [(ngModel)]="productCompany.stock" required  name="name" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  >
+                <label  for="exampleInputEmail1" class="form-label" id="texto">Cantidad a enviar</label>
+                <input [(ngModel)]="productBranch.stock" style="width: 16rem;" required  name="name" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  >
               </div>
 
-              <div class="row">
-                <div *ngFor="let branch of branchs" class="card m-2" style="width: 14rem; align-items: center; text-align: center;" >
-                    <img src="../../../assets/img/sucursal.png" height ="100rem" width="100rem" >
-                    <div class="card-body">
-                        <h5 id="sucursalName" class="card-title" style="text-align: center;">{{branch.name}}</h5>
-                        <input (click)="addProductBranch(addProductForm)" id="submit"  type="submit"  value="Enviar" data-bs-dismiss="modal">
-                    </div>
-                  </div>
+              <div class=" box form-group" >
+                <label for="direction">Sucursal</label>
+                <select [(ngModel)]="productBranch.branch" name="direction" class="form-select" aria-label="Default select example">
+                  <option value="" disabled >Menú de Selección</option>
+                  <option *ngFor="let branch of branchs" value="{{branch._id}}">{{branch.name}}</option>
+                </select>
               </div>
-              <div class="modal-footer">
-                <button  type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Close</button>
+              <div class="form-group">
+                <div class="multi-buttonA" >
+                <button (click)="addProductBranch(addProductForm)"  class="btn btn-success m-3 "
+                  data-bs-toggle="modal" >Enviar</button>
+                </div>
               </div>
-
             </form>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
 </div>
+</body>

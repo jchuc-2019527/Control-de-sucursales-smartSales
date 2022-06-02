@@ -121,11 +121,10 @@ exports.deleteBranch = async(req, res)=>{
 };
 
 // Un admin puede ver las sucursales de una empresa
-
 exports.getBranchByAdmin = async(req, res)=>{
     try {
         const companyId = req.params.id;
-        const branchs = await Branch.find({company: companyId});
+        const branchs = await Branch.find({company: companyId}).populate('company');
 
         return res.status(200).send({branchs});
 

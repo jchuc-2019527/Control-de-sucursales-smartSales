@@ -35,5 +35,10 @@ export class BranchRestService {
    deleteBranch(id: string){
     return this.http.delete(environment.baseUrl + 'branch/deleteBranch/' + id, {headers: this.httOptions});
    };
+
+   getBranchByAdmin(id:string){
+    return this.http.get(environment.baseUrl + 'branch/getBranchByAdmin/' + id,{headers:this.httOptions});
+
+   }
 }
 

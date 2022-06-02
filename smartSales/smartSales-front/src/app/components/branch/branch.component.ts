@@ -17,15 +17,20 @@ export class BranchComponent implements OnInit {
   name: string='';
   company: any;
 
+
   constructor(
     private branchRest: BranchRestService,
-    private companyRest: CompanyRestService
+    private companyRest: CompanyRestService,
+    
   ) { 
     this.branch = new branchModel('','','','');
     this.company = new companyModel('','','','','','');
+    
   }
 
   ngOnInit(): void {
+    
+    
     this.getBranchs(),
     this.name = this.companyRest.getIdentity().name
   }

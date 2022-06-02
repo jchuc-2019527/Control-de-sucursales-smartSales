@@ -1,7 +1,4 @@
 <body>
-  
-
-    
 <app-navbar></app-navbar>
 <div>
     <div class="text-center" >
@@ -40,9 +37,9 @@
   
         </thead>
     
-        <tbody>
+        <tbody *ngIf="productBranchs" >
           <tr *ngFor="let productBranch of productBranchs, let i=index">
-            <td >{{i+1}}</td>
+            <td >{{i +1}}</td>
             <td>{{productBranch.productCompany.name}}</td>
             <td>{{productBranch.stock}}</td>
             <td>{{productBranch.totalSales}}</td>

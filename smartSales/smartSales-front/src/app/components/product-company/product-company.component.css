@@ -23,9 +23,12 @@ body {
     text-transform: uppercase;
   }
   img {
-    border-radius: 50%;
-    height: 60px;
-    width: 60px;
+    height: 3.3rem;
+    width: 3.3rem;
+  }
+  img:hover{
+    height: 2.5rem;
+    width: 2.5rem;
   }
   .table-users {
     border: 1px solid #327a81;
@@ -442,14 +445,14 @@ button:active{
   }
 
   #b{
-    border: solid 5px #D35400 ;
+    border: solid 8px #D35400 ;
     height: 3rem;
     width: 20rem;
     
   }
 
   #b2{
-    border: solid 5px #2471A3 ;
+    border: solid 8px #2471A3 ;
     height: 3rem;
     width: 20rem;
     
@@ -481,7 +484,7 @@ button:active{
     .modal .modal-content .modal-body {
       border-radius: 7px;
       overflow: hidden;
-      background-color: #b0eafc;
+      background-color: #A9CCE3;
       padding-left: 0px;
       padding-right: 0px;
       -webkit-box-shadow: 0 10px 50px -10px rgba(0, 0, 0, 0.9);
@@ -568,21 +571,89 @@ button:active{
     background-color: rgb(67, 67, 63);
 }
 #texto{
-    color: white;
-    font-family: pasti;
+    color: black;
+   
 }
 
 
-#b {
+#benviar {
     background-color: #17A589; 
     color: black; 
     border: 4px solid #0E6655;
+   padding-left: 1rem;
+   padding-right: 1rem;
 
 }
-#b:hover {
+#benviar:hover {
     background-color: #73C6B6;
 
 }
 #sucursalName{
     font-family: digofa;
+}
+
+#header{
+  background-color:rgb(67, 67, 63);
+  
+}
+
+#iconoX:hover{
+  background-color: #ff0000;
+  padding: 0.3rem;
+}
+#iconoX{
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+#row{
+  margin-left: 1rem;
+  
+  margin-bottom: 1rem;
+  background-color: white;
+  border-radius: 1rem;
+}
+
+#form{
+  padding: 1rem;
+}
+
+/*Select*/
+.box select {
+  background-color: #FCF3CF;
+  color: black;
+  padding: 7px;
+  width: 250px;
+  border: none;
+  font-size: 18px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+
+  outline: none;
+}
+
+.box::before {
+  font-family: FontAwesome;
+  top: 0;
+  right: 0;
+  width: 20%;
+  height: 100%;
+  text-align: center;
+  font-size: 28px;
+  line-height: 45px;
+  color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+}
+
+.box:hover::before {
+  color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.box select option {
+  padding: 30px;
+}
+
+#name{
+  padding: 0.6rem;
 }

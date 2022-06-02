@@ -29,12 +29,13 @@ export class ProductBranchRestService {
     return this.httP.get(environment.baseUrl + 'productBranch/getProductsBranch2/' + id, {headers:this.httOptions})
   };
 
-  addProductBranch(){
-    return this.httP.post(environment.baseUrl + 'productBranch/addProductBranch', {headers:this.httOptions})
+  addProductBranch(params:{}){
+    return this.httP.post(environment.baseUrl + 'productBranch/addProductBranch', params, {headers:this.httOptions})
   };
 
-  addSale(id: string, params:{}){
-    return this.httP.post(environment.baseUrl + 'productBranch/addSale/' + id, params, {headers:this.httOptions} )
+  addSale(id: string, params: any){
+    let body = JSON.stringify({'sale':params});
+    return this.httP.post(environment.baseUrl + 'productBranch/addSale/' + id, body, {headers:this.httOptions} )
   };
   
 }

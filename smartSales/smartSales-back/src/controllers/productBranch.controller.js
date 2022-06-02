@@ -22,9 +22,9 @@ exports.addProductBranch = async(req, res) => {
                     let productBranch = new ProductBranch(data);
                     await productBranch.save();
                     const updateProductCompany = await ProductCompany.findOneAndUpdate({_id: params.productCompany}, {stock: searchProducyCompany.stock - params.stock}, {new:true});
-                    return res.status(200).send({message: 'Product created successfully', productBranch, updateProductCompany});
+                    return res.status(200).send({message: 'Product added successfully', productBranch, updateProductCompany});
                 }else{
-                    return res.status(400).send({message: 'Non-existing quantity'});
+                    return res.status(400).send({message: 'Quantity not available'});
                 }
             }else{
                 const searchProducyCompany = await ProductCompany.findOne({_id: params.productCompany});
@@ -32,9 +32,9 @@ exports.addProductBranch = async(req, res) => {
                     const searchProductBranch = await ProductBranch.findOne({productCompany: params.productCompany, branch: params.branch});
                     let updateProductBranch = await ProductBranch.findOneAndUpdate({productCompany: params.productCompany, branch: params.branch}, {stock: searchProductBranch.stock + data.stock}, {new:true});
                     const updateProductCompany = await ProductCompany.findOneAndUpdate({_id: params.productCompany}, {stock: searchProducyCompany.stock - params.stock}, {new:true});
-                    return res.status(200).send({message: 'Product add successfully', updateProductBranch, updateProductCompany});
+                    return res.status(200).send({message: 'Product added successfully', updateProductBranch, updateProductCompany});
                 }else{
-                    return res.status(400).send({message: 'Non-existing quantity'});
+                    return res.status(400).send({message: 'Quantity not available'});
                 }
             }
         }else{

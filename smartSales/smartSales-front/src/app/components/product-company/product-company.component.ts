@@ -8,7 +8,7 @@ import { ProductBranchRestService } from 'src/app/services/productBranchRest/pro
 import { ActivatedRoute } from '@angular/router';
 import { branchModel } from 'src/app/models/branch.model';
 import { BranchRestService } from 'src/app/services/branchRest/branch-rest.service';
-
+import { productBranchModel } from 'src/app/models/productBranch.model';
 
 @Component({
   selector: 'app-product-company',
@@ -25,6 +25,7 @@ export class ProductCompanyComponent implements OnInit {
 
   branchs: any =[];
   branch: branchModel;
+  productBranch: productBranchModel;
 
 
   
@@ -32,13 +33,14 @@ export class ProductCompanyComponent implements OnInit {
   constructor(
     private productCompanyRest: ProductCompanyRestService,
     private companyRest: CompanyRestService,
-    private activateRoute : ActivatedRoute,
     private branchRest: BranchRestService,
     private productBranchRest: ProductBranchRestService,
 
   ) { 
 
     this.productCompany = new productCompanyModel('','','',0,'');
+    this.productBranch = new productBranchModel('',0,0, '','');
+
     this.company = new companyModel( '', '', '', '', '', '' );
     this.branch = new branchModel('','','','');
   }
@@ -73,7 +75,9 @@ export class ProductCompanyComponent implements OnInit {
   };
   getProductCompany(id: string){
     this.productCompanyRest.getProductCompany(id).subscribe({
-      next:(res:any)=>{this.productCompanyUpdate = res.product},
+      next:(res:any)=>{this.productCompanyUpdate = res.product
+        console.log(this.productCompanyUpdate)},
+      
       error:(err)=>{alert(err.error.message)}
     })
   };
@@ -89,7 +93,7 @@ export class ProductCompanyComponent implements OnInit {
           timer: 2000,
           position:'center'
         })
-        this.getProducts()
+        this.getProducts();
         addProductCompanyForm.reset()
       },
       error: (err) => alert(err.error.message || err.error)
@@ -105,7 +109,8 @@ export class ProductCompanyComponent implements OnInit {
           timer: 2000,
           position:'center'
         })
-        this.getProducts()},
+        this.getProducts();
+      },
       error:(err)=> alert(err.error.message || err.error)
     })
   };
@@ -121,6 +126,7 @@ export class ProductCompanyComponent implements OnInit {
           position:'center'
         })
         this.getProducts();
+        this.getProducts2();
       },
       error:(err)=>Swal.fire({
         title: err.error.message,
@@ -141,7 +147,9 @@ export class ProductCompanyComponent implements OnInit {
   };
 
   addProductBranch(addProductForm: any){
-  this.productBranchRest.addProductBranch().subscribe({
+      this.productBranch.productCompany = this.productCompanyUpdate._id
+      this.productBranchRest.addProductBranch(this.productBranch).subscribe({
+       
       next:(res:any)=>{
         Swal.fire({
           title: res.message,
@@ -150,8 +158,10 @@ export class ProductCompanyComponent implements OnInit {
           timer: 2000,
           position:'center'
         })
-        this.getBranchs()
+        this.getBranchs();
+        this.getProducts();
         addProductForm.reset()
+        
       },
       error: (err) => alert(err.error.message || err.error)
     })

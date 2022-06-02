@@ -17,10 +17,10 @@
             <th >ID</th>
             <th> Nombre </th>
             <th>Tipo</th>
-            <th>Nombre de Usuario</th>
-            <th style="width: 13rem;"></th>
-            <th style="width: 13rem;"></th>
-            <th style="width: 13rem;"></th>
+            <th>Username</th>
+            <th style="width: 13rem;">Actualizar</th>
+            <th style="width: 13rem;">Eliminar</th>
+            <th style="width: 13rem;">Ver Sucursales</th>
             
          </tr>
   
@@ -34,24 +34,21 @@
             <td>{{company.username}}</td>
            
             <td>
-              <div class="multi-button">
-                <button (click)="getCompany(company._id)" data-bs-toggle="modal" data-bs-target="#exampleModalCenter2" >Actualizar</button>
-                
+              <div >
+                <i><img src="../../../assets/img/actualizar.png" alt="" width="20rem" height="20rem"(click)="getCompany(company._id)" data-bs-toggle="modal" data-bs-target="#exampleModalCenter2"  ></i>
               </div>
             </td>
+
             <td>
-              <div class="multi-button2">
-                <button (click)="deleteCompanyByAdmin(company._id)">Eliminar</button>
+              <div >
+                <i><img src="../../../assets/img/eliminar.png" alt="" width="20rem" height="20rem"(click)="deleteCompanyByAdmin(company._id)"></i>
               </div>
   
             </td>
+
             <td>
-              <div class="multi-button3">
-                <button [routerLink]="['/branchByAdmin/' + company._id]"> Sucursales
-                  <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" class="bi bi-box-seam" viewBox="0 0 16 16">
-                    <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z"/>
-                  </svg>
-                </button>
+              <div >
+                <i><img (click)="getCompany(company._id)"  [routerLink]="['/branchByAdmin/' + company._id]"src="../../../assets/img/ver.png" alt="" width="20rem" height="20rem"></i>
               </div>
   
             </td>
@@ -76,20 +73,29 @@
             <h3>Agregar Empresa</h3>
             <form #addCompanyForm="ngForm">
               <div class="form-group">
-                <label for="name">Nombre</label>
+                <label for="name">Nombre de la Empresa</label>
                 <input [(ngModel)]="company.name" name="name" type="text" class="form-control" id="name" placeholder="Nombre">
               </div>
-              <div class="form-group">
-                <label for="type">Tipo de empresa</label>
-                <input [(ngModel)]="company.type" name="type" type="text" class="form-control" id="type" placeholder="Tipo de empresa">
+              <div class="box form-group">
+                <label for="tipo">Tipo de empresa</label>
+                <select [(ngModel)]="company.type" name="tipo" class="form-select" aria-label="Default select example">
+                  <option value="" disabled >Menú de Selección</option>
+                  <option>Restaurante</option>
+                  <option>Tecnología</option>
+                  <option>Transporte</option>
+                  <option>Vestimenta</option>
+                  <option>Indefinido (Otro)</option>
+
+                </select>
               </div>
+
               <div class="form-group">
-                <label for="username">Nombre de usuario</label>
+                <label for="username">Username</label>
                 <input [(ngModel)]="company.username"  name="username" type="text" class="form-control" id="username" placeholder="Nombre de usuario">
               </div>
               <div class="form-group">
                 <label for="password">Contraseña</label>
-                <input [(ngModel)]="company.password"  name="password" type="text" class="form-control" id="password" placeholder="Contraseña">
+                <input [(ngModel)]="company.password"  name="password" type="password" class="form-control" id="password" placeholder="Contraseña">
               </div>
 
               <div class="form-group">

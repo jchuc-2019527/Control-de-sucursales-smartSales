@@ -2,6 +2,7 @@
 const { param } = require('express/lib/request');
 const ProductCompany = require('../models/productCompany.model');
 const {validateData, checkPermission1, checkDataUpdate1, orderProducts, orderProducts2 } = require('../utils/validate');
+const ProductBranch = require('../models/productBranch.model')
 
 //Agregar un producto
 exports.addProductCompany = async(req, res)=>{
@@ -113,7 +114,10 @@ exports.deleteProduct = async(req, res)=>{
         if(producExist){
             const permission = await checkPermission1(companyId, producExist.company);
             if(permission === true){
+
                 const deleteProduct = await ProductCompany.findOneAndDelete({_id: productCompanyId});
+                const deleteProductBranch = await ProductBranch.deleteMany({productCompany: productCompanyId})
+
                 return res.status(200).send({message:'Product Deleted', deleteProduct});
             }else{
                 return res.status(400).send({message:'Accion unauthorized'})

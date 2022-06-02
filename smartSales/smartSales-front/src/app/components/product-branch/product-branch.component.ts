@@ -46,6 +46,7 @@ export class ProductBranchComponent implements OnInit {
   getProductBranch(id: string){
     this.productBranchRest.getProductBranch(id).subscribe({
       next:(res:any)=>{this.product = res.productBranch
+        
         console.log(this.product)},
       error:(err)=>{alert(err.error.message)}
     })

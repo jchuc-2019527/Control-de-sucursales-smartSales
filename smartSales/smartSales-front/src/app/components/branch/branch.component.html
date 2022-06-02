@@ -1,5 +1,7 @@
-<app-navbar></app-navbar>
+<body>
+  
 
+<app-navbar></app-navbar>
 <div class="text-center">
     <div class="multi-buttonA"  style = "float: right">
       <button id="b" class="btn btn-success m-3 "
@@ -17,12 +19,12 @@
         <table cellspacing="0">
           <thead>
             <tr>
-              <th >Numero</th> 
+              <th >ID</th> 
               <th >Nombre</th>
               <th>Dirección</th>
-              <th style="width: 13rem;"></th>
-              <th style="width: 13rem;"></th>
-              <th style="width: 13rem;"></th>
+              <th style="width: 13rem;">Actualizar</th>
+              <th style="width: 13rem;">Eliminar</th>
+              <th style="width: 13rem;">Ver Productos</th>
               
            </tr>
     
@@ -35,23 +37,20 @@
               <td>{{branch.direction}}</td>
              
               <td>
-                <div class="multi-button">
-                  <button (click)="getBranch(branch._id)" data-bs-toggle="modal" data-bs-target="#exampleModalCenter1" >Actualizar</button>
+                <div>
+                  <i><img src="../../../assets/img/actualizar.png" alt="" width="20rem" height="20rem"(click)="getBranch(branch._id)" data-bs-toggle="modal" data-bs-target="#exampleModalCenter1" ></i>
                 </div>
               </td>
+
               <td>
-                <div class="multi-button2">
-                  <button (click)="deleteBranch(branch._id)" >Eliminar</button>
+                <div>
+                  <i><img src="../../../assets/img/eliminar.png" alt="" width="20rem" height="20rem"(click)="deleteBranch(branch._id)"></i>
                 </div>
-    
               </td>
+
               <td>
-                <div class="multi-button3">
-                  <button [routerLink]="['/productBranch/' + branch._id]"> Productos
-                    <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" fill="currentColor" class="bi bi-box-seam" viewBox="0 0 16 16">
-                      <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z"/>
-                    </svg>
-                  </button>
+                <div >
+                  <i><img [routerLink]="['/productBranch/' + branch._id]" src="../../../assets/img/reserva.png" alt="" width="20rem" height="20rem"></i>
                 </div>
     
               </td>
@@ -63,7 +62,7 @@
         </div>
       </div>
 
-      <!-- Modal Agregar -->
+<!-- Modal Agregar -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
       <div class="modal-content rounded -0">
@@ -74,14 +73,34 @@
             </div>
             <div class="content-text p-4">
               <h3>Agregar Sucursal</h3>
+              <br>
               <form #addBranchForm="ngForm">
                 <div class="form-group">
                   <label for="name">Nombre Sucursal</label>
-                  <input [(ngModel)]="branch.name" name="name" type="text" class="form-control" id="name" placeholder="nombre">
+                  <input id="name" [(ngModel)]="branch.name" name="name" type="text" class="form-control" id="name" placeholder="nombre">
                 </div>
-                <div class="form-group">
+                <div class=" box form-group" >
                   <label for="direction">Dirección</label>
-                  <input [(ngModel)]="branch.direction" name="direction" type="text" class="form-control" id="direction" placeholder="dirección">
+                  <select [(ngModel)]="branch.direction" name="direction" class="form-select" aria-label="Default select example">
+                    <option value="" disabled >Menú de Selección</option>
+                    <option>Guatemala</option>
+                    <option>Amatitlán</option>
+                    <option>Chinautla</option>
+                    <option>Fraijanes</option>
+                    <option>Mixco</option>
+                    <option>Palencia</option>
+                    <option>San José del Golfo</option>
+                    <option>San José Pinula</option>
+                    <option>San Juan Sacatepéquez</option>
+                    <option>San Miguel Petapa</option>
+                    <option>San Pedro Ayampuc</option>
+                    <option>San Pedro Sacatepéquez</option>
+                    <option>San Raymundo</option>
+                    <option>Santa Catarina Pinula</option>
+                    <option>Villa Canales</option>
+                    <option>Villa Nueva</option>
+                    
+                  </select>
                 </div>
                 <div class="form-group">
                   <div class="multi-buttonA" >
@@ -131,3 +150,4 @@
       </div>
     </div>
   </div>
+</body>
