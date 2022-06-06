@@ -27,7 +27,7 @@ export class ProductCompanyComponent implements OnInit {
   branch: branchModel;
   productBranch: productBranchModel;
 
-
+search: any;
   
 
   constructor(
@@ -51,6 +51,8 @@ export class ProductCompanyComponent implements OnInit {
     this.getBranchs();
     this.name = this.companyRest.getIdentity().name
   }
+
+  
 
 
 

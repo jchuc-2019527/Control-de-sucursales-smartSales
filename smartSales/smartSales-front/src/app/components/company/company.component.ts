@@ -13,6 +13,7 @@ export class CompanyComponent implements OnInit {
   company: companyModel;
   companyUpdate: any;
 
+  search1:any;
 
   constructor(
     private companyRest: CompanyRestService

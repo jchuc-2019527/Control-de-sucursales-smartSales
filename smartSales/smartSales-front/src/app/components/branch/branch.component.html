@@ -3,6 +3,12 @@
 
 <app-navbar></app-navbar>
 <div class="text-center">
+
+  <div style = "float: left" >
+    <div class="input-group"><input [(ngModel)]="search2" class="search" type="text" placeholder="Buscar" style="font-size: 1.4rem; font-family:'Courier New', Courier, monospace ; border-left: 10px;" /></div>
+    <div class="disclaimer"></div>
+</div>
+
     <div class="multi-buttonA"  style = "float: right">
       <button id="b" class="btn btn-success m-3 "
       data-bs-toggle="modal" data-bs-target="#exampleModalCenter">AGREGAR SUCURSAL</button>
@@ -31,7 +37,7 @@
           </thead>
       
           <tbody>
-            <tr *ngFor="let branch of branchs, let i=index">
+            <tr *ngFor="let branch of branchs | search:search2, let i=index">
               <td >{{i+1}}</td>
               <td>{{branch.name}}</td>
               <td>{{branch.direction}}</td>

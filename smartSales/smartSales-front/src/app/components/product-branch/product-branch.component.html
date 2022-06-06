@@ -2,6 +2,12 @@
 <app-navbar></app-navbar>
 <div>
     <div class="text-center" >
+
+      <div style = "float: left" >
+        <div class="input-group"><input [(ngModel)]="search3" class="search" type="text" placeholder="Buscar" style="font-size: 1.4rem; font-family:'Courier New', Courier, monospace ; border-left: 10px;" /></div>
+        <div class="disclaimer"></div>
+    </div>
+      
       <div class="multi-buttonB"  style = "float: right">
       <button id="b2" (click)="getProductsBranch2()" class="btn btn-success m-3 " >Ordenar de Menor a Mayor</button>
       </div>
@@ -38,7 +44,7 @@
         </thead>
     
         <tbody *ngIf="productBranchs" >
-          <tr *ngFor="let productBranch of productBranchs, let i=index">
+          <tr *ngFor="let productBranch of productBranchs | search2:search3, let i=index">
             <td >{{i +1}}</td>
             <td>{{productBranch.productCompany.name}}</td>
             <td>{{productBranch.stock}}</td>

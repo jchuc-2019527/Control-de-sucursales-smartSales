@@ -13,6 +13,10 @@ import { BranchComponent } from './components/branch/branch.component';
 import { ProductBranchComponent } from './components/product-branch/product-branch.component';
 import { BranchByAdminComponent } from './components/branch-by-admin/branch-by-admin.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { SearchPipe } from './pipes/search.pipe';
+import { PerfilComponent } from './components/perfil/perfil.component';
+import { Search2Pipe } from './pipes/search2.pipe';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +29,10 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     BranchComponent,
     ProductBranchComponent,
     BranchByAdminComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    SearchPipe,
+    PerfilComponent,
+    Search2Pipe
   ],
   imports: [
     BrowserModule,

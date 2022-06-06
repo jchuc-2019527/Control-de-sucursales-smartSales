@@ -17,6 +17,7 @@ export class BranchComponent implements OnInit {
   name: string='';
   company: any;
 
+  search2: any;
 
   constructor(
     private branchRest: BranchRestService,

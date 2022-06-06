@@ -4,6 +4,12 @@
 <app-navbar></app-navbar>
 <div>
   <div class="text-center" >
+
+    <div style = "float: left" >
+      <div  class="input-group"><input [(ngModel)]="search" class="search" type="text" placeholder="Buscar" style="font-size: 1.4rem; font-family:'Courier New', Courier, monospace ; border-left: 10px;" /></div>
+      <div class="disclaimer"></div>
+  </div>
+
     <div class="multi-buttonA"  style = "float: right">
       <button id="b" class="btn btn-success m-3 "
       data-bs-toggle="modal" data-bs-target="#exampleModalCenter" >Agregar Producto</button>
@@ -45,7 +51,7 @@
       </thead>
   
       <tbody>
-        <tr *ngFor="let productCompany of productCompanys, let i=index">
+        <tr *ngFor="let productCompany of productCompanys | search:search , let i=index">
           <td >{{i+1}}</td>
           <td>{{productCompany.name}}</td>
           <td>{{productCompany.supplier}}</td>

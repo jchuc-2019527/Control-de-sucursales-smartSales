@@ -19,6 +19,9 @@ export class ProductBranchComponent implements OnInit {
   idBranch:any;
   branch:any
 
+
+  search3: any['Producto11'];
+
   constructor(
     private productBranchRest: ProductBranchRestService,
     private branchRest: BranchRestService,
@@ -93,7 +96,7 @@ export class ProductBranchComponent implements OnInit {
     this.productBranchRest.addSale(this.product._id, this.sale).subscribe({
       next:(res:any)=>{
         Swal.fire({
-          title: res.message,
+          title: ' Venta realizada exitosamente',
           icon: 'success',
           showConfirmButton: false,
           timer: 2000,

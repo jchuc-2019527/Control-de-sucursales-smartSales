@@ -46,6 +46,8 @@ export class CompanyRestService {
   getCompanys(){
     return this.http.get(environment.baseUrl + 'company/getCompanys',{headers:this.httOptions});
   };
+
+  
   registerCompanyByAdmin(params: {}){
     return this.http.post(environment.baseUrl + 'company/registerCompanyByAdmin' ,params, {headers:this.httOptions});
   };

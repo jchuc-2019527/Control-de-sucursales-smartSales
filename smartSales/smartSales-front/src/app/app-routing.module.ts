@@ -8,6 +8,7 @@ import { ProductCompanyComponent } from './components/product-company/product-co
 import { ProductBranchComponent } from './components/product-branch/product-branch.component';
 import { BranchByAdminComponent } from './components/branch-by-admin/branch-by-admin.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
 
 const routes: Routes = [
   {path: '', component:LoginComponent},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'productCompany', component: ProductCompanyComponent},
   {path: 'productBranch/:id', component:ProductBranchComponent},
   {path: 'branchByAdmin/:id', component:BranchByAdminComponent},
+  {path: 'perfil/:id', component:PerfilComponent},
   {path: '**', component:NotFoundComponent}
 ];
 

@@ -549,4 +549,33 @@ button:active{
     margin-top: 10px;
   } 
     
-    
+   /* buscador*/
+
+.input-group {
+  position: relative; }
+  .input-group .search {
+    height: 50px;
+    width: 550px;
+    background-color: #fff;
+    border: 0;
+    border-radius: 20px 20px 20px 20px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.15);
+    outline: none;
+    padding: 5px;
+    position: relative;
+    transition: all 150ms cubic-bezier(0.2, 0.6, 0.252, 1.2);
+    margin: 13px;}
+    .input-group .search:focus {
+      height: 50px;
+      width: 550px;
+      border-radius: 15px;
+      color: #26547c;
+      cursor: initial; }
+      .input-group .search:focus::placeholder {
+        color: #a1a1a1; }
+      .input-group .search:focus ~ .bar {
+        box-shadow: none;
+        opacity: 0;
+        right: 0;
+        top: 5px; }
+ 
