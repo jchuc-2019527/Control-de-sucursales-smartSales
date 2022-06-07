@@ -84,7 +84,7 @@ exports.getProductsBranch2 = async (req, res) =>{
         return res.status(200).send({productsOrder});
     }catch (err){
         console.log(err);
-        return err;
+        return err; 
     }
 };
  exports.getProductBranch= async (req,res) =>{

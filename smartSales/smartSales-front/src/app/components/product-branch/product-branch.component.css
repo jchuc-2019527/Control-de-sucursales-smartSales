@@ -23,9 +23,12 @@ body {
     text-transform: uppercase;
   }
   img {
-    border-radius: 50%;
-    height: 60px;
-    width: 60px;
+    height: 3.3rem;
+    width: 3.3rem;
+  }
+  img:hover{
+    height: 2.5rem;
+    width: 2.5rem;
   }
   .table-users {
     border: 1px solid #327a81;
@@ -451,8 +454,9 @@ button:active{
     border: solid 5px #2471A3 ;
     height: 3rem;
     width: 20rem;
-    
   }
+  
+
   @font-face {
     font-family: digofa;
     src: url(../../../assets/font/Digofa-RegPersonal.otf);

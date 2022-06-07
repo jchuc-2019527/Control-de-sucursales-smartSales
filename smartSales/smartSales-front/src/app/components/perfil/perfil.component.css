@@ -86,6 +86,21 @@ body {
 
   /* Perfil*/
 
+  #titulo{
+      background-color: #fff;
+      border: solid .4rem #2C3E50 ;
+  }
+  #contenido{
+    background-color: #fff;
+    border: solid .4rem #2C3E50 ;
+    padding-top: 2.5rem;
+  }
+  
+
+  .perfil-usuario-bio{
+      background-color: #fff;
+  }
+
   .seccion-perfil-usuario .perfil-usuario-body,
 .seccion-perfil-usuario {
     display: flex;
@@ -112,24 +127,20 @@ body {
 
 .seccion-perfil-usuario .perfil-usuario-avatar {
     display: flex;
-    width: 180px;
-    height: 180px;
+    
     align-items: center;
     justify-content: center;
-    border: 7px solid #5581fa;
-    background-color: #001c58;
-    border-radius: 50%;
-    box-shadow: 0 0 12px rgba(0, 0, 0, .2);
-    position: absolute;
-    bottom: -40px;
-    left: calc(50% - 90px);
-    z-index: 1;
+    margin-top: 2rem;
+    
+    bottom: 1rem;
+    
 }
 
 .seccion-perfil-usuario .perfil-usuario-avatar img {
-    width: 100%;
+    width: 15rem;
+    height: 15rem;
     position: relative;
-    border-radius: 50%;
+    
 }
 
 .seccion-perfil-usuario .perfil-usuario-avatar .boton-avatar {
@@ -154,7 +165,7 @@ body {
 .seccion-perfil-usuario .perfil-usuario-body .titulo {
     display: block;
     width: 100%;
-    font-size: 1.75em;
+    font-size: 2.5rem;
     margin-bottom: 0.5rem;
 }
 

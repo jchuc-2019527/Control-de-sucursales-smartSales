@@ -9,17 +9,21 @@ import { ProductBranchComponent } from './components/product-branch/product-bran
 import { BranchByAdminComponent } from './components/branch-by-admin/branch-by-admin.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
+import { GraphComponent } from './components/graph/graph.component';
+import { AdminGuardGuard } from './guards/admin-guard.guard';
 
 const routes: Routes = [
   {path: '', component:LoginComponent},
   {path:'login', component:LoginComponent},
   {path: 'home', component: HomeComponent},
-  {path: 'company', component: CompanyComponent},
+  {path: 'company', canActivate:[AdminGuardGuard],component: CompanyComponent},
   {path: 'branch', component: BranchComponent},
   {path: 'productCompany', component: ProductCompanyComponent},
   {path: 'productBranch/:id', component:ProductBranchComponent},
   {path: 'branchByAdmin/:id', component:BranchByAdminComponent},
   {path: 'perfil/:id', component:PerfilComponent},
+  {path: 'graph/:id', component:GraphComponent},
+
   {path: '**', component:NotFoundComponent}
 ];
 

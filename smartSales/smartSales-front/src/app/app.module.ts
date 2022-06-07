@@ -16,6 +16,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { SearchPipe } from './pipes/search.pipe';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { Search2Pipe } from './pipes/search2.pipe';
+import { GraphComponent } from './components/graph/graph.component';
+import { ChartsModule } from '@rinminase/ng-charts';
 
 
 @NgModule({
@@ -32,13 +34,15 @@ import { Search2Pipe } from './pipes/search2.pipe';
     NotFoundComponent,
     SearchPipe,
     PerfilComponent,
-    Search2Pipe
+    Search2Pipe,
+    GraphComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ChartsModule
     
   ],
   providers: [],

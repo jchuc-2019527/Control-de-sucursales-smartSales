@@ -11,7 +11,13 @@ import { CompanyRestService } from 'src/app/services/companyRest/company-rest.se
 export class PerfilComponent implements OnInit {
   company: companyModel;
   idCompany: any
-  companys: any =[] ;
+  
+  name: any;
+  type:any;
+  role:any;
+  username:any
+
+  
   constructor(
     public activateRoute: ActivatedRoute,
     private companyRest: CompanyRestService
@@ -23,17 +29,11 @@ export class PerfilComponent implements OnInit {
     this.activateRoute.paramMap.subscribe((idC:any)=>{
       this.idCompany = idC.get('id');
     });
-    this.getCompany();
-};
-
-getCompany(){
-  this.companyRest.getCompany(this.idCompany).subscribe({
-    next:(res:any)=>{
-      this.company = res.company;
-     // console.log(this.company);
-    },
-    error: (err) => console.log(err.error.message || err.error)
-  })
+  
+    this.name = this.companyRest.getIdentity().name
+    this.type = this.companyRest.getIdentity().type
+    this.role = this.companyRest.getIdentity().role
+    this.username = this.companyRest.getIdentity().username
 };
 
 }

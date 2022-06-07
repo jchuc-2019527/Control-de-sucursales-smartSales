@@ -62,7 +62,7 @@ exports.getCompanys = async (req, res)=>{
 //Mostrar una sola Company
 exports.getCompany = async (req, res)=>{
   try {
-      const companyId = req.params.idCompany
+      const companyId = req.params.id
       const company = await Company.findOne({_id: companyId})
       return res.status(200).send({company});
   } catch (error) {
@@ -71,7 +71,7 @@ exports.getCompany = async (req, res)=>{
   }
 };
 
-//Actualizar Company por un ADMIN
+//Actualizar Company por un ADMIN 
 exports.updateCompanyByAdmin = async (req, res)=>{
   try {
       const companyId = req.params.id;

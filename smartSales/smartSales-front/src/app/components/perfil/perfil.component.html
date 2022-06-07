@@ -13,19 +13,21 @@
         <div class="perfil-usuario-header">
             <div class="perfil-usuario-portada">
                 <div class="perfil-usuario-avatar">
-                    <img src="../../../assets/img/empresa (1).png" alt="img-avatar">
+                    <img src="../../../assets/img/company.png" alt="img-avatar">
                 </div>
             </div>
         </div>
         <div class="perfil-usuario-body">
-            <div class="perfil-usuario-bio">
-                <h3 class="titulo"> {{ company.name }}</h3>
+            <div class="perfil-usuario-bio" id="titulo">
+                <h2 class="titulo"> {{name}}</h2>
             </div>
-            <div class="perfil-usuario-footer">
+            <div class="perfil-usuario-footer" id="contenido">
                 <ul class="lista-datos">
-                    <li><i class="icono fa-regular fa-user" ></i> Nombre de Usuario:</li><p>{{ company.username }}</p>
-                    <li><i class="icono fas fa-briefcase"></i> Tipo de Empresa:</li><p>{{ company.type }}</p>
-                    <li><i class="icono fas fa-building"></i> Rol:</li><p>{{ company.role }}</p>
+                    <h4>Nombre de Usuario:</h4><p>{{name}}</p>
+                    <h4>Username:</h4><p>{{ username }}</p>
+                    <h4>Tipo de Empresa:</h4><p>{{ type }}</p>
+                    <h4>Rol:</h4><p>{{ role }}</p>
+                    
 
                 </ul>
             </div>

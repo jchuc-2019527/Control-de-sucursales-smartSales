@@ -102,7 +102,8 @@ export class ProductBranchComponent implements OnInit {
           timer: 2000,
           position:'center'
         })
-        this.getProductsBranch()
+        this.getProductsBranch();
+        this.getProductsBranch2();
         addSaleForm.reset()
         
       },
