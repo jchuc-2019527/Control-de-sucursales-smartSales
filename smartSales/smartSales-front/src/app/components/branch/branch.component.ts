@@ -59,7 +59,12 @@ export class BranchComponent implements OnInit {
         this.getBranchs()
         addBranchForm.reset()
       },
-      error: (err) => alert(err.error.message || err.error)
+      error:(err)=>Swal.fire({
+        title: err.error.message,
+        icon: 'error',
+        timer: 4000,
+        position:'center'
+      })
     })
   };
 
@@ -81,7 +86,12 @@ export class BranchComponent implements OnInit {
           position:'center'
         })
         this.getBranchs()},
-      error:(err)=> alert(err.error.message || err.error)
+        error:(err)=>Swal.fire({
+          title: err.error.message,
+          icon: 'error',
+          timer: 4000,
+          position:'center'
+        })
     })
   };
 

@@ -40,11 +40,14 @@ export class LoginComponent implements OnInit {
         this.router.navigateByUrl('/home')
 
       },
-      error: (err)=>{
-        alert(err.error.message || err.error);
-        loginForm.reset()
-      }
+      error:(err)=>Swal.fire({
+        title: err.error.message,
+        icon: 'error',
+        timer: 4000,
+        position:'center'
+      })
     })
+    loginForm.reset()
   }
 
 }

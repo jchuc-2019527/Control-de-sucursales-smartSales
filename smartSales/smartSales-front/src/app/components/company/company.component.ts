@@ -53,7 +53,12 @@ export class CompanyComponent implements OnInit {
         this.getCompanys()
         addCompanyForm.reset()
       },
-      error: (err) => alert(err.error.message || err.error)
+      error:(err)=>Swal.fire({
+        title: err.error.message,
+        icon: 'error',
+        timer: 4000,
+        position:'center'
+      })
     })
   };
   updateCompanyByAdmin( ){
@@ -69,7 +74,12 @@ export class CompanyComponent implements OnInit {
           position:'center'
         })
         this.getCompanys()},
-      error:(err)=> alert(err.error.message || err.error)
+        error:(err)=>Swal.fire({
+          title: err.error.message,
+          icon: 'error',
+          timer: 4000,
+          position:'center'
+        })
     })
   };
   deleteCompanyByAdmin(id: string){

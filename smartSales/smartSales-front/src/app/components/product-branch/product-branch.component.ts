@@ -107,8 +107,14 @@ export class ProductBranchComponent implements OnInit {
         addSaleForm.reset()
         
       },
-      error: (err) => alert(err.error.message || err.error)
+      error:(err)=>Swal.fire({
+        title: err.error.message,
+        icon: 'error',
+        timer: 4000,
+        position:'center'
+      })
     })
+    addSaleForm.reset()
   }
 
 }

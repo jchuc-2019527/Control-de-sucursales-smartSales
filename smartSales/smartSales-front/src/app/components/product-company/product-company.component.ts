@@ -98,7 +98,12 @@ search: any;
         this.getProducts();
         addProductCompanyForm.reset()
       },
-      error: (err) => alert(err.error.message || err.error)
+      error:(err)=>Swal.fire({
+        title: err.error.message,
+        icon: 'error',
+        timer: 4000,
+        position:'center'
+      })
     })
   };
   updateProduct( ){
@@ -113,7 +118,12 @@ search: any;
         })
         this.getProducts();
       },
-      error:(err)=> alert(err.error.message || err.error)
+      error:(err)=>Swal.fire({
+        title: err.error.message,
+        icon: 'error',
+        timer: 4000,
+        position:'center'
+      })
     })
   };
 
@@ -165,8 +175,14 @@ search: any;
         addProductForm.reset()
         
       },
-      error: (err) => alert(err.error.message || err.error)
+      error:(err)=>Swal.fire({
+        title: err.error.message,
+        icon: 'error',
+        timer: 4000,
+        position:'center'
+      })
     })
+    addProductForm.reset()
   };
 
 }
